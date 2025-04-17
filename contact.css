@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #000428, #004e92);
+    width: 100%;
+    padding: 15px 20px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+main {
+    flex: 1;
+    margin-top: 80px;
+  }
+
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo-img {
+    display: block;
+    height: auto;
+    max-width: 75px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* Title */
+.site-title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #f8f8f8;
+    /* White */
+    text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .logo img {
+        max-width: 70px;
+        height: auto;
+    }
+    .site-title {
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+/* Hamburger icon */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+    display: block;
+    background: #004e92;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom-left-radius: 10px;
+}
+
+/* Side nav */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to right, #000428, #004e92);
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+.side-nav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.side-nav a:hover {
+    background-color: rgb(12, 57, 180);
+}
+
+.side-nav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+section {
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+footer {
+    background: linear-gradient(to right, #000428, #004e92);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    height: 4em;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        font-size: 14px;
+    }
+
+}

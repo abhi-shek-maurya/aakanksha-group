@@ -1,0 +1,632 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #000428, #004e92);
+    width: 100%;
+    padding: 15px 20px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+
+/* Search bar */
+.header-search-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.header-search-toggle img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(100%);
+    /* ensures it's pure white */
+    position: absolute;
+    right: 80px;
+    top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .header-search-toggle img {
+        width: 25px;
+        height: 25px;
+        filter: brightness(100%);
+        /* ensures it's pure white */
+        position: absolute;
+        right: 65px;
+        top: 25px;
+    }
+
+}
+
+/* Expanding Search Container */
+#expandSearchBar {
+    position: absolute;
+    top: 60px;
+    /* or adjust as needed */
+    right: 0;
+    z-index: 1000;
+    /* lower than hamburger */
+}
+
+
+.search-expand-container {
+    position: absolute;
+    top: 60px;
+    width: 50%;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.search-expand-container.active {
+    display: flex;
+}
+
+.search-expand-container input {
+
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search-expand-container button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+
+.translate-container {
+    position: absolute;
+    top: 115px;
+    right: 0;
+    z-index: 9999;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/* Hide Google branding text if needed */
+.goog-logo-link,
+.goog-te-gadget span {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    font-size: 0px;
+}
+
+
+.notranslate {
+    unicode-bidi: isolate;
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.logo img {
+    max-width: 75px;
+    height: auto;
+}
+
+/* Title */
+.site-title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #f8f8f8;
+    /* White */
+    text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .logo img {
+        max-width: 70px;
+        height: auto;
+    }
+    .site-title {
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+/* Hamburger icon */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+    display: block;
+    background: #004e92;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom-left-radius: 10px;
+}
+
+/* Side nav */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to right, #000428, #004e92);
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+.side-nav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.side-nav a:hover {
+    background-color: rgb(12, 57, 180);
+}
+
+.side-nav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+/* Hide the Google Translate banner */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+
+/* Ensure no unwanted space */
+.goog-te-gadget {
+    margin-top: 0px !important;
+}
+
+/* Remove any iframe added by Google */
+iframe.goog-te-banner-frame {
+    display: none !important;
+}
+
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #eef2f3, #dfe9f3);
+    color: #333;
+    padding-top: 100px;
+    top: 0px !important;
+    position: static !important;
+}
+
+.scroll-btn {
+    position: fixed;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: #004aad;
+    color: white;
+    font-size: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+#scrollTopBtn {
+    bottom: 80px;
+}
+
+#scrollBottomBtn {
+    bottom: 20px;
+}
+
+.scroll-btn:hover {
+    background-color: #006eff;
+    transform: scale(1.1);
+}
+
+
+.top {
+    background-image: url('top.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 500px 200px;
+    text-align: center;
+    background-size: 100%;
+    animation: zoomBg 15s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBg {
+    from {
+        background-size: 100%;
+    }
+
+    to {
+        background-size: 105%;
+    }
+}
+
+@media (max-width: 768px) {
+    .top {
+        background-size: cover !important;
+        animation: none !important;
+    }
+}
+
+
+.top h1 {
+    font-size: 100px;
+    margin-top: 20px;
+    color: rgba(15, 114, 242, 0.904);
+    animation: slideFadeIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.top p {
+    font-size: 20px;
+    color: #f6d9d9;
+    line-height: 1.6;
+    animation: slideFadeIn 1.2s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.top h1,
+.top p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* How It Works Section */
+.how-it-works {
+    padding: 50px 10%;
+    background: white;
+}
+
+.how-it-works h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #004e92;
+    margin-bottom: 30px;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.step {
+    background: linear-gradient(to right, #000428, #004e92);
+    padding: 30px;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.step h3 {
+    font-size: 20px;
+    color: #a8e6ff;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 15px;
+    color: white;
+}
+
+/* Why Choose Us */
+.why-choose {
+    padding: 50px 15%;
+    background: #e3edf7;
+    text-align: center;
+}
+
+.why-choose h2 {
+    font-size: 28px;
+    color: #003366;
+}
+
+.why-choose ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Call-to-Action Section */
+.cta-section {
+    background: linear-gradient(to right, #000428, #004e92);
+    padding: 50px 10%;
+    text-align: center;
+    color: white;
+}
+
+.cta-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.cta-text {
+    flex: 1;
+    text-align: left;
+    max-width: 600px;
+}
+
+.cta-text h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cta-text p {
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.cta-text .company-name {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.cta-card {
+    background: white;
+    color: #333;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+}
+
+.cta-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ff5722;
+}
+
+.cta-card p {
+    font-size: 16px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #ff5722;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #e64a19;
+}
+
+
+/* Submit Form */
+.submit-form {
+    background: linear-gradient(to right, #000428, #004e92);
+    /* Light gradient background */
+    padding: 30px;
+    border-radius: 15px;
+    border: 8px double #004e92;
+    background-clip: padding-box;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+.submit-form label {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* Form Input Fields */
+.submit-form input,
+.submit-form textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    text-align: left;
+    box-sizing: border-box;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+select {
+    width: 90%;
+    padding: 12px;
+    text-align: left;
+    box-sizing: border-box;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+
+/* Submit Button */
+.submit-form button {
+    background: #ff5722;
+    color: white;
+    padding: 12px;
+    width: 50%;
+    margin: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.submit-form h2 {
+    font-size: 28px;
+    color: #a8e6ff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.submit-form form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+    align-items: center;
+}
+
+.submit-form textarea {
+    height: 80px;
+    font-family: sans-serif;
+}
+
+
+.submit-form button:hover {
+    background: #020870dc;
+    transform: scale(1.05);
+}
+
+/* Google Map */
+.location {
+    padding: 40px 10%;
+    text-align: center;
+}
+
+.location h2 {
+    font-size: 28px;
+    color: #004e92;
+    margin-bottom: 20px;
+}
+
+.location iframe {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+footer {
+    background: linear-gradient(to right, #000428, #004e92);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    height: 4em;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 18px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    .top {
+        padding: 100px 50px;
+
+    }
+
+    .top h1 {
+        font-size: 32px;
+        color: rgba(15, 114, 242, 0.904);
+    }
+
+    .top p {
+        font-size: 18px;
+        color: #f6d9d9;
+        line-height: 1.6;
+    }
+}

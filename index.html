@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakanksha Group Services</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="index.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+        <div class="logo">
+            <img src="logo.png">
+        </div>
+        <h1 class="site-title"><span class="notranslate">Aakanksha Group Services</span></h1>
+        <!-- search icon -->
+        <a href="products.html"> <button id="searchToggle" class="header-search-toggle" aria-label="Search">
+                <img src="https://img.icons8.com/ios-filled/24/ffffff/search--v1.png" alt="Search Icon">
+            </button>
+            <!-- Expanding Search Bar -->
+            <div id="expandSearchBar" class="search-expand-container">
+                <input type="text" id="productSearchInput" placeholder="Search for products..." autocomplete="off">
+                <button id="closeSearchBar" aria-label="Close Search">×</button>
+                <ul id="suggestionsList" class="suggestions-list"></ul>
+            </div>
+        </a>
+
+
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="calculator.html">EMI Calculator</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+    </header>
+    <div class="translate-container">
+        <div id="google_translate_element"></div>
+    </div>
+    <section class="top">
+        <h1>Empowering Women Through Financial Freedom</h1>
+        <p>At Aakanksha Group Services, we are on a mission to uplift women by providing them with easy access to
+            essential household products. Our unique financing model is designed exclusively for women, helping them
+            take charge of their financial independence while ensuring a seamless and structured repayment process.</p>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2>How It Works?</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: Small Group Formation</h3>
+                    <p>A minimum of five women come together to form a group.</p>
+                    <p> This group serves as a support system, ensuring timely repayments and financial discipline.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Avail Household Products</h3>
+                    <p>Once the group is formed, members can choose household products they need.</p>
+                    <p>These products are financed exclusively in the name of women, even with <a href="calculator.html"
+                            style="text-decoration: none;"><strong style="color: #ff5722; font-style: italic;">Zero
+                                Downpayment</strong></a>,
+                        empowering them directly.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3: Weekly Installments & Collection</h3>
+                    <p>Every 7 days, each group member pays a fixed installment amount on a certain day.</p>
+                    <p>A center leader (chosen from the group) is responsible for collecting payments from all members.
+                    </p>
+                    <p>The center leader then hands over the collected amount to the field officer, assigned to their
+                        region.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 4: Dedicated Field Officers</h3>
+                    <p>Our field officers play a key role in facilitating smooth transactions.</p>
+                    <p>They provide financial guidance, collect payments, and ensure that members have a hassle-free
+                        experience.</p>
+                </div>
+                <div class="step">
+                    <h3>Step 5: Rewards & Recognition</h3>
+                    <p>We value the efforts of our center leaders and recognize their contribution.</p>
+                    <p>Every year, center leaders are rewarded with special gifts as a token of appreciation for their
+                        dedication and hard work.</p>
+                    <p>The more responsible a leader is, the better the rewards! 🎁</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose">
+            <h2>Why Choose Aakanksha Group Services?</h2>
+            <ul>
+                <li>✅ Designed Exclusively for Women– We empower women by offering financial solutions tailored to their
+                    needs.</li>
+                <li>✅ Easy & Flexible EMI Plans– Our structured weekly payment model ensures affordability and ease of
+                    repayment.</li>
+                <li>✅ Community-Based Growth & Support– Women support each other in groups, fostering financial
+                    discipline & responsibility.</li>
+                <li>✅ Rewarding & Motivating Leadership– Center leaders are not only guides but also beneficiaries of
+                    our reward program.</li>
+                <li>✅ Trust & Reliability with Dedicated Field Officers– Backed by a well-structured system of field
+                    officers and center leaders, ensuring transparency at every step.</li>
+            </ul>
+        </section>
+
+        <!-- Call-to-Action Section (Between Why-Choose & Submit Form) -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <div class="cta-text">
+                    <h3>💡 Join the thousands of women transforming their lives!</h3>
+                    <p>With Aakanksha Group Services, you can **finance essential household products with ease** and
+                        gain financial independence.</p>
+                    <h4>📞 Have Questions? Want to Apply? 📍 Visit us or Contact our team today!</h4>
+                </div>
+                <div class="cta-card">
+                    <h3>🚀 Take the First Step!</h3>
+                    <p>Start your journey toward financial empowerment today.</p>
+                    <a href="#submit-form" class="cta-button">Apply Now</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Customer Submit Form -->
+        <section class="submit-form" id="submit-form">
+            <h2>Apply Now</h2>
+            <form id="customerForm">
+                <label>Full Name:</label>
+                <input name="full_name" type="text" pattern="^[A-Za-z\s]+$" title="Only letters allowed" required>
+
+                <label>Husband's Name / Son's Name:</label>
+                <input name="husband_son_name" type="text" pattern="^[A-Za-z\s]+$" title="Only letters allowed"
+                    required>
+
+                <label>Phone Number:</label>
+                <input name="phone" type="tel" pattern="[0-9]{10}" maxlength="10" required>
+
+                <label>Address:</label>
+                <textarea name="address" pattern="^[A-Za-z\s]+$" title="Only letters allowed" required></textarea>
+
+                <label>PIN Code:</label>
+                <input name="pincode" type="text" pattern="[0-9]{6}" maxlength="6" required>
+
+                <label>District:</label>
+                <input name="district" type="text" pattern="^[A-Za-z\s]+$" title="Only letters allowed" required>
+
+                <label for="products">Products you're looking for:</label>
+                <select id="products" name="products" required onchange="toggleOtherInput(this.value)">
+                    <option value="" disabled selected>Select a product</option>
+                    <option value="LED TV">LED TV</option>
+                    <option value="Washing Machine">Washing Machine</option>
+                    <option value="Mixer Grinder">Mixer Grinder</option>
+                    <option value="Juicer Mixer">Juicer Mixer</option>
+                    <option value="Mobile Phone (various categories)">Mobile Phone (Various categories)</option>
+                    <option value="Fridge">Fridge</option>
+                    <option value="Godrej Almirah">Godrej Almirah</option>
+                    <option value="Ceiling Fan">Ceiling Fan</option>
+                    <option value="Stand Fan">Stand Fan</option>
+                    <option value="Inverter & Battery">Inverter & Battery</option>
+                    <option value="Water Motor">Water Motor</option>
+                    <option value="D-Freezer">D-Freezer</option>
+                    <option value="Cooler">Cooler</option>
+                    <option value="Milton Jar 15 L or 20 L">Milton Jar 15 L or 20 L</option>
+                    <option value="Milton Bottle 1/2 L">Milton Bottle 1/2 L</option>
+                    <option value="Milton Bottle 1 L">Milton Bottle 1 L</option>
+                    <option value="Pressure Cooker">Pressure Cooker</option>
+                    <option value="Induction Cooktop">Induction Cooktop</option>
+                    <option value="Sunking Light">Sunking Light</option>
+                    <option value="Diwan Palang Bed">Diwan Palang Bed</option>
+                    <option value="Steel Palang Bed">Steel Palang Bed</option>
+                    <option value="Trunk">Trunk</option>
+                    <option value="Mitcase">Mitcase</option>
+                    <option value="Kothi">Kothi</option>
+                    <option value="Bicycle (All categories available)">Bicycle (All categories available)</option>
+                    <option value="Chair">Chair</option>
+                    <option value="Table">Table</option>
+                    <option value="Bartan Stand">Bartan Stand</option>
+                    <option value="Sabji Stand">Sabji Stand</option>
+                    <option value="Full Bartan (Peetal)">Full Bartan (Peetal)</option>
+                    <option value="Kitchen Drum Set (115 Pcs)">Kitchen Drum Set (115 Pcs)</option>
+                    <option value="Sofa">Sofa</option>
+                    <option value="Complete Wedding Set">Complete Wedding Set</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div id="otherProductDiv"
+                    style="display:none; width: 90%; padding: 12px; text-align: left; box-sizing: border-box; border: 2px solid #003366; border-radius: 8px; font-size: 16px; margin: 8px 0;">
+                    <label for="otherProduct" style="text-align: center;">Please specify:</label>
+                    <input type="text" style="width: 100%;" id="otherProduct" name="otherProduct"
+                        pattern="^[A-Za-z\s]+$" title="Only letters allowed">
+                </div>
+
+                <button type="submit">Submit</button>
+                <p id="form-status"
+                    style="display: none; margin-top: 1rem; padding: 12px; border-radius: 8px; font-weight: 500; font-size: 1rem;">
+                </p>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- Google Map -->
+        <section class="location">
+            <h2>📍 Our Location</h2>
+            <div style="width: 100%; height: 400px; margin-bottom: 1rem;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14393.759993802526!2d86.026238!3d25.660664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDM5JzM4LjQiTiA4NsKwMSczNC41IkU!5e0!3m2!1sen!2sin!4v1712234567890!5m2!1sen!2sin"
+                    width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://www.google.com/maps/dir/?api=1&destination=25.660664,86.026238" target="_blank"
+                    style="background-color: green; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-size: 1rem;">
+                    🚗 Get Directions
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p><span class="notranslate">© 2025 Aakanksha Group Services. All Rights Reserved.</span></p>
+    </footer>
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById("sideNav");
+            if (nav.style.width === "200px") {
+                nav.style.width = "0";
+            } else {
+                nav.style.width = "200px";
+            }
+        }
+        document.addEventListener("click", function (event) {
+            const nav = document.getElementById("sideNav");
+            const hamburger = document.querySelector(".hamburger");
+
+            if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.style.width = "0";
+            }
+        });
+
+    </script>
+
+    <!-- Translate Portion -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+
+    <!-- Thank You message -->
+    <script> window.onload = function () {
+            document.getElementById("form-status").style.display = "none";
+        };
+
+        document.getElementById("customerForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // ✅ Prevent default submission
+
+            const form = e.target;
+            const data = new FormData(form);
+            const status = document.getElementById("form-status");
+
+            function showStatusMessage(message, type) {
+                status.style.display = "block";
+                status.textContent = message;
+
+                if (type === "loading") {
+                    status.style.backgroundColor = "#e0f0ff";
+                    status.style.color = "#007bff";
+                    status.style.border = "1px solid #007bff";
+                } else if (type === "success") {
+                    status.style.backgroundColor = "#e6ffea";
+                    status.style.color = "#28a745";
+                    status.style.border = "1px solid #28a745";
+                } else if (type === "error") {
+                    status.style.backgroundColor = "#ffe6e6";
+                    status.style.color = "#dc3545";
+                    status.style.border = "1px solid #dc3545";
+                }
+            }
+
+            showStatusMessage("⏳ Submitting your request...", "loading");
+
+            fetch("https://script.google.com/macros/s/AKfycbymSZUKPeDqbGzHjvuhbiPZZAt5qyFst4KnkXicL4pBgKwnfx4DDxmHwmsxu-ENqac3/exec", {
+                method: "POST",
+                body: data,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === "success") {
+                        showStatusMessage("✅ Thank you! Your application has been submitted successfully. We'll contact you shortly📞.", "success");
+                        form.reset();
+                    } else {
+                        showStatusMessage("❌ Something went wrong. Please try again.", "error");
+                    }
+                })
+                .catch(error => {
+                    showStatusMessage("❌ Submission failed. Please check your internet or try again.", "error");
+                });
+        });
+
+
+    </script>
+
+    <!-- Other Option -->
+    <script>
+        function toggleOtherInput(value) {
+            const otherDiv = document.getElementById("otherProductDiv");
+            const otherInput = document.getElementById("otherProduct");
+
+            if (value === "Other") {
+                otherDiv.style.display = "block";
+                otherInput.required = true;
+            } else {
+                otherDiv.style.display = "none";
+                otherInput.required = false;
+                otherInput.value = ""; // clear old value
+            }
+        }
+    </script>
+
+    <!-- Scroll Buttons -->
+    <div id="scrollTopBtn" class="scroll-btn" onclick="scrollToTop()" title="Go to Top">⬆️</div>
+    <div id="scrollBottomBtn" class="scroll-btn" onclick="scrollToBottom()" title="Go to Bottom">⬇️</div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+    </script>
+
+    <!-- Search icon -->
+
+
+
+
+
+</body>
+
+</html>

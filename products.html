@@ -1,0 +1,3023 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Aakanksha Group Services</title>
+    <link rel="stylesheet" href="products.css">
+    <script src="products.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header>
+
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+                </a>
+            </div>
+            <h1 class="site-title">Aakanksha Group Services</h1>
+            <!-- search icon -->
+            <button id="searchToggle" class="header-search-toggle" aria-label="Search">
+                <img src="https://img.icons8.com/ios-filled/24/ffffff/search--v1.png" alt="Search Icon">
+            </button>
+            <!-- Expanding Search Bar -->
+            <div id="expandSearchBar" class="search-expand-container">
+                <input type="text" id="productSearchInput" placeholder="Search for products..." autocomplete="off">
+                <button id="closeSearchBar" aria-label="Close Search">×</button>
+                <ul id="suggestionsList" class="suggestions-list"></ul>
+            </div>
+
+
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </header>
+
+        <main>
+
+            <!-- Sorting & Filtering -->
+            <div class="sort-filter">
+                <label for="sortEmiSelect">Sort By:</label>
+                <select id="sortEmiSelect">
+                    <option value="">Select Option</option>
+                    <option value="weekly-low-high">EMIs Low to High (Weekly)</option>
+                    <option value="weekly-high-low">EMIs High to Low (Weekly)</option>
+                    <option value="monthly-low-high">EMIs Low to High (Monthly)</option>
+                    <option value="monthly-high-low">EMIs High to Low (Monthly)</option>
+                </select>
+            </div>
+
+
+
+            <div class="product-grid">
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maskara 24 inch.jpg" alt="Maskara 24 inch LED TV" class="product-image">
+                        <h2 class="price-text">Maskara 24" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹480/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1920/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maskara 32 inch.jpeg" alt="Maskara 32 inch LED TV" class="product-image">
+                        <h2 class="price-text">Maskara 32" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹600/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maskara 43 inch.jpg" alt="Maskara 43 inch LED TV" class="product-image">
+                        <h2 class="price-text">Maskara 43" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/lg 32 inch.jpg" style="height: 220px;" alt="LG 32 inch LED TV"
+                            class="product-image">
+                        <h2 class="price-text">LG 32" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹925/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3700/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/samsung 32 inch.jpg" alt="Samsung 32 inch LED TV" class="product-image">
+                        <h2 class="price-text">Samsung 32" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹985/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3940/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/one plus 43 inch.jpg" style="height: 220px;" alt="One Plus 43 inch LED TV"
+                            class="product-image">
+                        <h2 class="price-text">One Plus 43" LED TV</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1300/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹5200/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool semi-automatic.webp"
+                            alt="Whirlpool Semi-automatic kapra or kapda Washing Machine" class="product-image">
+                        <h2 class="price-text">Whirlpool Semi-automatic Washing Machine</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹670/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2680/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool automatic.webp" style="height: 200px;"
+                            alt="Whirlpool Automatic kapra or kapda Washing Machine" class="product-image">
+                        <h2 class="price-text">Whirlpool Automatic Washing Machine</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">850/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/reliance bpl semi-automatic.jpg" style="height: 200px;"
+                            alt="Reliance BPL Semi-automatic kapra or kapda Washing Machine" class="product-image">
+                        <h2 class="price-text">Reliance BPL Semi-automatic Washing Machine</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹650/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/bpl-mixpulse.jpg" style="height: 220px;"
+                            alt="Reliance BPL mix-pulse masala or chatni or chutney Mixer" class="product-image">
+                        <h2 class="price-text">Reliance BPL mix-pulse Mixer</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹150/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/bpl felizio.jpg" style="height: 250px;"
+                            alt="Reliance BPL Felizio+ masala or chatni or chutney Mixer" class="product-image">
+                        <h2 class="price-text">Reliance BPL Felizio+ Mixer</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹160/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹640/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/bpl-mix-master.jpg" style="height: 200px;"
+                            alt="Reliance BPL mix-master masala or chatni or chutney Mixer" class="product-image">
+                        <h2 class="price-text">Reliance BPL mix-master 750W Mixer</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹180/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹720/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/bpl-mix-xpert.jpg" style="height: 200px;"
+                            alt="Reliance BPL mix-xpert masala or chatni or chutney Mixer" class="product-image">
+                        <h2 class="price-text">Reliance BPL mix-xpert 750W Mixer</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja 500w.jpg"
+                            alt="Maharaja Whiteline masala or chatni or chutney mixer 500W" class="product-image">
+                        <h2 class="price-text">Maharaja Whiteline 500W</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹130/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹520/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja 750w.jpg"
+                            alt="Maharaja Whiteline masala or chatni or chutney mixer 750W" class="product-image">
+                        <h2 class="price-text">Maharaja Whiteline 750W</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹170/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹680/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/usha 550w.webp" alt="Usha masala or chatni or chutney mixer 550W"
+                            class="product-image">
+                        <h2 class="price-text">Usha Mixer 550W</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹150/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/Juicer Mixer.jpg" alt="Maharaja Juicer masala or chatni or chutney Mixer 450W"
+                            class="product-image">
+                        <h2 class="price-text">Maharja Juicer Mixer 450W</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹180/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹720/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja juicer mixer 550w.webp"
+                            alt="Maharaja Juicer masala or chatni or chutney Mixer 550W" class="product-image">
+                        <h2 class="price-text">Maharaja Juicer Mixer 550W</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/Vivo y58 5g.webp" style="height: 220px;" alt="Vivo Y58 5G mobile 8/128"
+                            class="product-image">
+                        <h2 class="price-text">Vivo Y58 5G 8/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹880/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3520/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y29 5g.webp" alt="Vivo Y29 5G mobile 4/128" class="product-image">
+                        <h2 class="price-text">Vivo Y29 5G 4/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹750/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y29 5g 6,128.jpg" alt="Vivo Y29 5G mobile 6/128" class="product-image">
+                        <h2 class="price-text">Vivo Y29 5G 6/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹820/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3280/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y28s 5g.jpg" alt="Vivo Y28s 5G mobile 4/128" class="product-image">
+                        <h2 class="price-text">Vivo Y58 5G 8/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹700/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y28s 5g 6,128.jpg" alt="Vivo Y28s 5G mobile 6/128" class="product-image">
+                        <h2 class="price-text">Vivo Y28s 5G 6/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹775/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3100/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y18 4g.png" alt="Vivo Y18 4G mobile 4/64" class="product-image">
+                        <h2 class="price-text">Vivo Y18 4G 4/64</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹450/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y18 4g 4,128.jpg" alt="Vivo Y18 4G mobile 4/128" class="product-image">
+                        <h2 class="price-text">Vivo Y18 4G 4/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹550/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2200/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/vivo y19e 4g.jpg" alt="Vivo Y19e 4G mobile 4/64" class="product-image">
+                        <h2 class="price-text">Vivo Y19e 4G 4/64</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹470/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1880/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/oppo a3 pro 5g.png" alt="Oppo A3 Pro 5G mobile 8/128" class="product-image">
+                        <h2 class="price-text">Oppo A3 Pro 5G 8/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹850/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/oppo a78 5g.png" alt="Oppo A78 5G mobile 8/128" class="product-image">
+                        <h2 class="price-text">Oppo A78 5G 8/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹925/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3700/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/oppo a3 5g.webp" alt="Oppo A3 5G mobile 6/128" class="product-image">
+                        <h2 class="price-text">Oppo A3 5G 6/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹800/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3200/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/oppo a59 5g.webp" alt="Oppo A59 5G mobile 4/128" class="product-image">
+                        <h2 class="price-text">Oppo A59 5G 4/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹750/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/oppo a3x 5g.jpg" alt="Oppo A3x 5G mobile 4/128" class="product-image">
+                        <h2 class="price-text">Oppo A3x 5G 4/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹750/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/samsung f15 5g.png" alt="Samsung Galaxy F15 5G mobile 4/128"
+                            class="product-image">
+                        <h2 class="price-text">Samsung Galaxy F15 5G 4/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹720/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2880/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/nokia hmd crest 5g.png" alt="Nokia HMD Crest 5G mobile 6/128"
+                            class="product-image">
+                        <h2 class="price-text">Nokia HMD Crest 5G 6/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹720/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2880/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/lava yuva 5g.webp" alt="Lava Yuva 5G mobile 4/64" class="product-image">
+                        <h2 class="price-text">Lava Yuva 5G 4/64</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹500/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/lava blaze 2 5g.webp" alt="Lava Blaze 2 5G mobile 6/128" class="product-image">
+                        <h2 class="price-text">Lava Blaze 2 5G 6/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹575/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/lava blaze duo 5g.jpg" alt="Lava Blaze Duo 5G mobile 8/128"
+                            class="product-image">
+                        <h2 class="price-text">Lava Blaze Duo 5G 8/128</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹900/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/motorola keypad.jpg" alt="Motorola Keypad mobile Phone" class="product-image">
+                        <h2 class="price-text">Motorola Keypad Phone</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹75/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/voltas fridge.jpg" style="height: 200px;"
+                            alt="TATA Voltas fridge or frij or freeze or freej Refrigerator 1 Star"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas Refrigerator 1 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹720/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2880/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/voltas fridge.jpg" style="height: 200px;"
+                            alt="TATA Voltas fridge or frij or freeze or freej Refrigerator 2 Star"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas Refrigerator 2 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹770/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3080/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/voltas fridge.jpg" style="height: 200px;"
+                            alt="TATA Voltas fridge or frij or freeze or freej Refrigerator 3 Star"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas Refrigerator 3 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹840/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3360/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/voltas fridge.jpg" style="height: 200px;"
+                            alt="TATA Voltas fridge or frij or freeze or freej Refrigerator 4 Star"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas Refrigerator 4 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹940/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3760/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/voltas fridge.jpg" style="height: 200px;"
+                            alt="TATA Voltas fridge or frij or freeze or freej Refrigerator 5 Star"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas Refrigerator 5 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1020/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4080/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool fridge.jpg" style="height: 230px;"
+                            alt="Whirlpool fridge or frij or freeze or freej Refrigerator 1 Star" class="product-image">
+                        <h2 class="price-text">Whirlpool Refrigerator 1 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹740/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2960/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool fridge.jpg" style="height: 230px;"
+                            alt="Whirlpool fridge or frij or freeze or freej Refrigerator 2 Star" class="product-image">
+                        <h2 class="price-text">Whirlpool Refrigerator 2 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹790/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3160/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool fridge.jpg" style="height: 230px;"
+                            alt="Whirlpool fridge or frij or freeze or freej Refrigerator 3 Star" class="product-image">
+                        <h2 class="price-text">Whirlpool Refrigerator 3 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹850/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool fridge.jpg" style="height: 230px;"
+                            alt="Whirlpool fridge or frij or freeze or freej Refrigerator 4 Star" class="product-image">
+                        <h2 class="price-text">Whirlpool Refrigerator 4 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹950/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/whirlpool fridge.jpg" style="height: 230px;"
+                            alt="Whirlpool fridge or frij or freeze or freej Refrigerator 5 Star" class="product-image">
+                        <h2 class="price-text">Whirlpool Refrigerator 5 Star</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1025/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4100/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/triveni no. 1 godrej.webp" style="height: 230px;"
+                            alt="Triveni godrej no. 1 Almirah" class="product-image">
+                        <h2 class="price-text">Triveni no. 1 Almirah</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹785/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3140/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/triveni max godrej.webp" style="height: 230px;"
+                            alt="Triveni godrej max Almirah" class="product-image">
+                        <h2 class="price-text">Triveni max Almirah</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹650/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/diamond almirah.webp" style="height: 230px;" alt="Diamond godrej Almirah"
+                            class="product-image">
+                        <h2 class="price-text">Diamond Almirah</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹750/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/ceiling fan.webp" alt="Luminous panka or pankha Rapid Ceiling Fan 1200mm Blade"
+                            class="product-image">
+                        <h2 class="price-text">Luminous Rapid (1200mm) Ceiling Fan</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹90/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹360/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/ceiling fan.webp" alt="Luminous panka or pankha Rapid Ceiling Fan 900mm Blade"
+                            class="product-image">
+                        <h2 class="price-text">Luminous Rapid (900mm) Ceiling Fan</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹90/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹360/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/ceiling fan.webp" alt="Luminous panka or pankha Rapid Ceiling Fan 600mm Blade"
+                            class="product-image">
+                        <h2 class="price-text">Luminous Rapid (600mm) Ceiling Fan</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹95/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹380/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/stand fan.jpg" style="height: 205px;"
+                            alt="Luminous panka or pankha RR Signature Stand Fan" class="product-image">
+                        <h2 class="price-text">Luminous RR Signature Stand Fan</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹190/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹760/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/inverter & battery.jpg"
+                            alt="Inverter & Battery or inbhiter or enviter or inviter or enbhaiter or enbhiter"
+                            class="product-image">
+                        <h2 class="price-text">Inverter & Battery (EMIs may vary)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/mahindra motor.webp" style="height: 205px;"
+                            alt="Mahindra Water Motor 1 HP or motar or pani or paani or panee motor"
+                            class="product-image">
+                        <h2 class="price-text">Mahindra Water Motor Pump 1 HP</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹330/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1320/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/water motor.webp"
+                            alt="Crompton Water Motor 1 HP or motar or pani or paani or panee motor"
+                            class="product-image">
+                        <h2 class="price-text">Crompton Water Motor Pump 1 HP</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹350/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/d-freezer.webp" style="height: 205px;"
+                            alt="tata voltas fridge or frij or freeze or freej d fridge 320 liter"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas D-Freezer 320 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/d-freezer.webp" style="height: 205px;"
+                            alt="tata voltas fridge or frij or freeze or freej d fridge 500 liter"
+                            class="product-image">
+                        <h2 class="price-text">TATA Voltas D-Freezer 500 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1550/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹6200/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja 42 litre cooler.jpg" style="height: 230px;"
+                            alt="Maharaja garmi Cooler 42 Liter" class="product-image">
+                        <h2 class="price-text">Maharaja Cooler 42 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹390/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1560/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja 50 litre cooler.jpg" style="height: 230px;"
+                            alt="Maharaja garmi Cooler 50 Liter" class="product-image">
+                        <h2 class="price-text">Maharaja Cooler 50 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹500/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/maharaja 65 litre cooler.jpg" style="height: 230px;"
+                            alt="Maharaja garmi Cooler 65 Liter" class="product-image">
+                        <h2 class="price-text">Maharaja Cooler 65 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹570/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2280/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/cooler.webp" style="height: 235px;" alt="Maharaja garmi Cooler 80 Liter"
+                            class="product-image">
+                        <h2 class="price-text">Maharaja Cooler 80 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹640/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹2560/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/milton jar.webp" style="height: 235px;"
+                            alt="Milton Jar pani dabba or tharma 15 liter" class="product-image">
+                        <h2 class="price-text">Milton Jar 15 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹70/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹280/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/milton jar 20 litre.webp" style="height: 230px;"
+                            alt="Milton Jar pani dabba or tharmas 20 liter" class="product-image">
+                        <h2 class="price-text">Milton Jar 20 Litres</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹80/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹320/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/milton bottle 1 litre.jpg" style="height: 230px;"
+                            alt="milton bottle or pani tharmas 1 liter" class="product-image">
+                        <h2 class="price-text">Milton Bottle 1 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹60/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹240/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/milton bottle.webp" style="height: 230px;"
+                            alt="milton bottle or pani tharmas half liter" class="product-image">
+                        <h2 class="price-text">Milton Bottle 1/2 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹40/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹160/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/united pressure cooker 3 litre.jpg" style="height: 205px;"
+                            alt="united pressure cooker 3 liter" class="product-image">
+                        <h2 class="price-text">United Pressure Cooker (Induction) - 3 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹65/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹260/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/united pressure cooker 5 litre.webp" alt="united pressure cooker 5 liter"
+                            class="product-image">
+                        <h2 class="price-text">United Pressure Cooker (Induction) - 5 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹85/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹340/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hawkins pressure cooker 3 litre.jpg" style="height: 205px;"
+                            alt="hawkins pressure cooker 3 liter" class="product-image">
+                        <h2 class="price-text">Hawkins Pressure Cooker - 3 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹55/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹220/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/pressure cooker.jpg" alt="hawkins pressure cooker 5 liter"
+                            class="product-image">
+                        <h2 class="price-text">Hawkins Pressure Cooker - 5 Litre</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹75/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/induction cooktop.webp" alt="reliance BPL induction or bijli or beejli chulha"
+                            class="product-image">
+                        <h2 class="price-text">Reliance BPL Induction Cooktop</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹180/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹720/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/usha-induction-cooktop.jpg" style="height: 230px;"
+                            alt="usha induction or bijli or beejli chulha" class="product-image">
+                        <h2 class="price-text">Usha Induction Cooktop</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/sunking light.webp" style="height: 230px;" alt="solar or lamp or light"
+                            class="product-image">
+                        <h2 class="price-text">Sunking Solar Light</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹135/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹540/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/diwan palang.webp" style="height: 205px;" alt="diwan coach or koch palang bed"
+                            class="product-image">
+                        <h2 class="price-text">Diwan Palang Bed (with Gadda) - (EMIs may vary)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹1100/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹4400/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/steel palang.jpg" style="height: 205px;" alt="steel coach or koch palang bed"
+                            class="product-image">
+                        <h2 class="price-text">Steel Palang Bed (with Gadda) - (EMIs may vary)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹750/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/trunk.webp" style="height: 235px;" alt="trunk or trank box 4 feet (4 ft.)"
+                            class="product-image">
+                        <h2 class="price-text">Trunk Box (TATA) 4 ft.</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹170/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹680/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/trunk.webp" style="height: 235px;" alt="trunk or trank box 5 feet (5 ft.)"
+                            class="product-image">
+                        <h2 class="price-text">Trunk Box (TATA) 5 ft.</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹250/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/trunk.webp" style="height: 205px;" alt="trunk or trank box 6 feet (6 ft.) 45mm"
+                            class="product-image">
+                        <h2 class="price-text">Trunk Box (TATA) 6 ft. (45mm sheet)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹270/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1080/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/trunk.webp" style="height: 205px;" alt="trunk or trank box 6 feet (6 ft.) 60mm"
+                            class="product-image">
+                        <h2 class="price-text">Trunk Box (TATA) 6 ft. (60mm sheet)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹320/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1280/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/mitcase.webp" style="height: 205px;"
+                            alt="chadra meetkase or meetkes or mitkes or mitcase" class="product-image">
+                        <h2 class="price-text">Aluminium Sheet Mitcase (TATA)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹180/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹720/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/mitcase.webp" style="height: 205px;"
+                            alt="ply meetkase or meetkes or mitkes or mitcase" class="product-image">
+                        <h2 class="price-text">Plywood Mitcase</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹200/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹800/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/mitcase.webp" style="height: 205px;"
+                            alt="lakri or lakdi meetkase or meetkes or mitkes or mitcase" class="product-image">
+                        <h2 class="price-text">Wood Mitcase</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹230/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹920/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/kothi.jpg" style="height: 205px;" alt="kothi 5 mon or moan box"
+                            class="product-image">
+                        <h2 class="price-text">Wheat Container Drum Box 200 Kg</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹65/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹260/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/kothi.jpg" style="height: 205px;" alt="kothi 7 mon or moan box"
+                            class="product-image">
+                        <h2 class="price-text">Wheat Container Drum Box 280 Kg</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹75/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/kothi.jpg" style="height: 205px;" alt="kothi 10 mon or moan box"
+                            class="product-image">
+                        <h2 class="price-text">Wheat Container Drum Box 400 Kg</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹135/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹540/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero-ranger-cycle-with-soccer.png" style="height: 205px;"
+                            alt="ranger or ranjer or renjar or rengar bicycle or cycle or saikil or saaikil or saaykil with sokar or soker"
+                            class="product-image">
+                        <h2 class="price-text">Hero Ranger Cycle (with Soccer)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹325/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero ranger cycle without soccer.jpg" style="height: 205px;"
+                            alt="ranger or ranjer or renjar or rengar bicycle or cycle or saikil or saaikil or saaykil without sokar or soker"
+                            class="product-image">
+                        <h2 class="price-text">Hero Ranger Cycle (without Soccer)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹315/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1260/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero girl cycle.webp" style="height: 235px;"
+                            alt="dolchi cycle or larki or ladki bicycle or saikil or saaikil or saaykil"
+                            class="product-image">
+                        <h2 class="price-text">Hero Girl Cycle</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹280/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1120/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero-terrain-cycle.jpg"
+                            alt="hero terrain bicycle or cycle or saikil or saaikil or saaykil 20 inch"
+                            class="product-image">
+                        <h2 class="price-text">Hero Terrain Cycle (20")</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹265/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1060/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero sukhoi cycle.jpg"
+                            alt="hero sukhoi bicycle or cycle or saikil or saaikil or saaykil 20 inch"
+                            class="product-image">
+                        <h2 class="price-text">Hero Sukhoi Cycle (20")</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹275/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1100/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/hero 22 inch cycle.jpg" style="height: 235px;"
+                            alt="hero bada bicycle or cycle or saikil or saaikil or saaykil 22 inch"
+                            class="product-image">
+                        <h2 class="price-text">Hero 22" Cycle</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹280/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹1120/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/baby cycle.webp" style="height: 205px;"
+                            alt="baby or kids or bacha or baccha or bachcha bicycle or cycle or saikil or saaikil or saaykil"
+                            class="product-image">
+                        <h2 class="price-text">Baby Cycle (EMIs may vary)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹160week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹640/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/chairs.webp" style="height: 230px;" alt="century plastic kursi"
+                            class="product-image">
+                        <h2 class="price-text">Century Chairs (Set of 4)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹150/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/avro chair.webp" style="height: 230px;" alt="avro plastic kursi"
+                            class="product-image">
+                        <h2 class="price-text">Avro Chairs (Set of 4)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹160/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹640/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/century chair without arm.webp" style="height: 235px;"
+                            alt="century plain or plen plastic kursi" class="product-image">
+                        <h2 class="price-text">Century Chair (without Arm)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹110/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹440/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/table.jpg" style="height: 230px;"
+                            alt="century big plastic table or tebul or tabul" class="product-image">
+                        <h2 class="price-text">Century Plastic Table (Big)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹75/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹300/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/small plastic table.jpg" style="height: 235px;"
+                            alt="century small plastic table or tebul or tabul" class="product-image">
+                        <h2 class="price-text">Century Plastic Table (Small)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹35/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹140/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/bartan stand.webp" style="height: 235px;"
+                            alt="bartan wall or waal sten or stan" class="product-image">
+                        <h2 class="price-text">Bartan Stand</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹90/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹360/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/sabji stand.jpg" style="height: 235px;"
+                            alt="sabji or sbji sten or stan or stand" class="product-image">
+                        <h2 class="price-text">Sabji Stand</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹60/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹240/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/full bartan.jpg" alt="peetal or pital full or fool bartan"
+                            class="product-image">
+                        <h2 class="price-text">Peetal Full Bartan (Set of 5 Dishes)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹150/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹600/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/balti set.jpg" style="height: 235px;"
+                            alt="kitchen or kichan or kichen dram or draam or drum or baalti set" class="product-image">
+                        <h2 class="price-text">Kitchen Balti Set (115 Dishes)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹240/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹960/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/sofa set.webp" style="height: 205px;"
+                            alt="sofa or furniture or farnitar or dan or daan or larki or ladki set"
+                            class="product-image">
+                        <h2 class="price-text">Sofa Set (One 3 Seater + Two Single Seater)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹800/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹3200/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-variant">
+                    <div class="product-content">
+                        <img src="images/wedding set.webp"
+                            alt="shadi or shaadi or furniture or farnitar or sadi or saadi or vivah or viwah or vyah or biwah or bivah or biyah full or fool kanya dan or daan or larki or ladki set"
+                            class="product-image">
+                        <h2 class="price-text">Complete Wedding Set (EMIs may vary, depends on order quantity)</h2>
+
+                        <!-- Button that flips to show weekly EMI -->
+                        <div class="emi-buttons">
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Weekly EMI</div>
+                                    <div class="flip-back">₹2000/week</div>
+                                </div>
+                            </div>
+
+                            <!-- Button that flips to show monthly EMI -->
+                            <div class="flip-container">
+                                <div class="flip-card">
+                                    <div class="flip-front">Show Monthly EMI</div>
+                                    <div class="flip-back">₹8000/month</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <p>© 2025 Aakanksha Group Services. All Rights Reserved.</p>
+        </footer>
+
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById("sideNav");
+                if (nav.style.width === "200px") {
+                    nav.style.width = "0";
+                } else {
+                    nav.style.width = "200px";
+                }
+            }
+            document.addEventListener("click", function (event) {
+                const nav = document.getElementById("sideNav");
+                const hamburger = document.querySelector(".hamburger");
+
+                if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                    nav.style.width = "0";
+                }
+            });
+
+        </script>
+
+        <script>
+            document.querySelectorAll('.flip-container').forEach(container => {
+                container.addEventListener('click', () => {
+                    container.classList.toggle('flipped');
+                });
+            });
+        </script>
+
+        <!-- Search icon -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get search query from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const initialSearch = urlParams.get("search");
+
+                if (initialSearch) {
+                    input.value = initialSearch;
+                    input.dispatchEvent(new Event("input"));
+                }
+
+
+                const searchToggle = document.getElementById("searchToggle");
+                const searchBar = document.getElementById("expandSearchBar");
+                const closeSearch = document.getElementById("closeSearchBar");
+                const input = document.getElementById("productSearchInput");
+                const suggestionsList = document.getElementById("suggestionsList");
+                const allProducts = Array.from(document.querySelectorAll(".product-variant"));
+                const productGrid = document.querySelector(".product-grid");
+
+                // Open search bar
+                searchToggle.addEventListener("click", () => {
+                    searchBar.classList.add("active");
+                    input.focus();
+                });
+
+                // Clear input text only, do not reset filtered products
+                closeSearch.addEventListener("click", () => {
+                    input.value = "";
+                    suggestionsList.innerHTML = "";
+                    input.focus();
+
+                    // Keep already filtered products as-is
+                    const visibleProducts = allProducts.filter(p => p.style.display !== "none");
+                    if (visibleProducts.length === 0) {
+                        suggestionsList.appendChild(noMatchItem);
+                    }
+
+                    const sorryMessage = document.querySelector(".no-products-message");
+                    if (sorryMessage) sorryMessage.remove();
+                    showAllProducts();
+
+                });
+
+
+                // Filter and show suggestions
+                input.addEventListener("input", function () {
+                    const term = this.value.trim().toLowerCase();
+                    suggestionsList.innerHTML = "";
+
+                    // Remove previous "sorry" message if any
+                    const existingSorry = document.querySelector(".sorry-message");
+                    if (existingSorry) {
+                        existingSorry.remove();
+                    }
+
+                    if (!term) {
+                        showAllProducts();
+                        return;
+                    }
+
+                    let matchCount = 0;
+                    const matchedProducts = [];
+
+                    allProducts.forEach(product => {
+                        const name = product.querySelector("h2").innerText.toLowerCase();
+                        const alt = product.querySelector("img").alt.toLowerCase();
+                        const isMatch = name.includes(term) || alt.includes(term);
+
+                        if (isMatch) {
+                            matchedProducts.push(product);
+                            matchCount++;
+                            const suggestionItem = document.createElement("li");
+                            suggestionItem.classList.add("suggestion-item");
+
+                            suggestionItem.innerHTML = `
+                            <img src="${product.querySelector("img").src}" alt="" class="suggestion-image">
+                            <span>${product.querySelector("h2").innerText}</span>
+                        `;
+                            suggestionItem.addEventListener("click", () => {
+                                input.value = product.querySelector("h2").innerText;
+                                suggestionsList.innerHTML = "";
+
+                                const existingSorry = document.querySelector(".no-results-container");
+                                if (existingSorry) existingSorry.remove();
+
+
+                                // Move the clicked product to the top and hide others
+                                productGrid.prepend(product);
+                                allProducts.forEach(p => p.style.display = p === product ? "block" : "none");
+
+                                // Move clicked product to top
+                                productGrid.insertBefore(product, productGrid.firstChild);
+
+                            });
+                            suggestionsList.appendChild(suggestionItem);
+                        }
+                    });
+
+                    if (matchCount === 0) {
+                        // Hide all products
+                        allProducts.forEach(p => p.style.display = "none");
+
+                        // Show a friendly message with image
+                        // Hide all products
+                        allProducts.forEach(p => p.style.display = "none");
+
+                        // Check if already exists
+                        if (!document.querySelector(".no-results-container")) {
+                            const sorryDiv = document.createElement("div");
+                            sorryDiv.className = "no-results-container";
+                            sorryDiv.style.textAlign = "center";
+                            sorryDiv.style.padding = "30px";
+                            sorryDiv.innerHTML = `
+                            <div style ="margin-top: -120px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No results" style="width: 120px;">
+        <h1>Sorry, no results found!</h1>
+        <p style="font-size: 1.2 rem; color: #555; margin-top: 10px;">Please check the spelling or try searching for something else...</p>
+        </div>
+    `;
+                            productGrid.parentNode.insertBefore(sorryDiv, productGrid.nextSibling);
+                        }
+
+                    } else {
+                        showOnlyMatched(term);
+                    }
+                });
+
+                // Show only matching products
+                function showOnlyMatched(term, matched = []) {
+                    const sorryDiv = document.querySelector(".no-results-container");
+                    if (sorryDiv) sorryDiv.remove();
+
+                    allProducts.forEach(p => {
+                        const name = p.querySelector("h2")?.innerText.toLowerCase() || "";
+                        const alt = p.querySelector("img")?.alt.toLowerCase() || "";
+                        const match = name.includes(term) || alt.includes(term);
+                        p.style.display = match ? "block" : "none";
+                    });
+
+                    if (matched.length > 0) {
+                        matched.forEach(p => productGrid.prepend(p));
+                    }
+                }
+
+
+                // Show all products
+                function showAllProducts() {
+                    allProducts.forEach(p => p.style.display = "block");
+                }
+
+                // Allow Enter key to search
+                input.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        const term = input.value.trim().toLowerCase();
+                        showOnlyMatched(term);
+                        suggestionsList.innerHTML = "";
+                    }
+                });
+
+                // Outside click behavior (only close search bar, not filtered products)
+                document.addEventListener("click", function (e) {
+                    if (!searchBar.contains(e.target) && !searchToggle.contains(e.target)) {
+                        searchBar.classList.remove("active");
+                        suggestionsList.innerHTML = "";
+                    }
+                });
+            });
+        </script>
+
+
+
+
+        <!-- Sorting & Filtering -->
+        <script>
+            document.getElementById('sortEmiSelect').addEventListener('change', function () {
+                const value = this.value;
+                if (value === '') {
+                    location.reload(); // Refresh page if "Select Option" is chosen
+                    return;
+                }
+
+                const productGrid = document.querySelector('.product-grid');
+                const products = Array.from(productGrid.querySelectorAll('.product-variant'));
+
+                const extractEmi = (el, index) => {
+                    const emiText = el.querySelectorAll('.flip-back')[index]?.textContent || '';
+                    return parseFloat(emiText.replace(/[^\d.]/g, '')) || 0;
+                };
+
+                let sorted = products.slice();
+
+                if (value === 'weekly-low-high') {
+                    sorted.sort((a, b) => extractEmi(a, 0) - extractEmi(b, 0));
+                } else if (value === 'weekly-high-low') {
+                    sorted.sort((a, b) => extractEmi(b, 0) - extractEmi(a, 0));
+                } else if (value === 'monthly-low-high') {
+                    sorted.sort((a, b) => extractEmi(a, 1) - extractEmi(b, 1));
+                } else if (value === 'monthly-high-low') {
+                    sorted.sort((a, b) => extractEmi(b, 1) - extractEmi(a, 1));
+                }
+
+                // Re-append sorted products
+                productGrid.innerHTML = '';
+                sorted.forEach(product => productGrid.appendChild(product));
+            });
+        </script>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Aakanksha Group Services</title>
+    <link rel="stylesheet" href="contact.css">
+    <script src="contact.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header>
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+                </a>
+            </div>
+            <h1 class="site-title">Aakanksha Group Services</h1>
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </header>
+        <main>
+
+
+            <section class="lorem">
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae nemo fugit eveniet eum dicta
+                    minima possimus aliquam beatae dolor. Officia, est odit!
+                </p>
+            </section>
+
+
+
+
+        </main>
+
+
+
+
+        <footer>
+            <p>© 2025 Aakanksha Group Services. All Rights Reserved.</p>
+        </footer>
+
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById("sideNav");
+                if (nav.style.width === "200px") {
+                    nav.style.width = "0";
+                } else {
+                    nav.style.width = "200px";
+                }
+            }
+            document.addEventListener("click", function (event) {
+                const nav = document.getElementById("sideNav");
+                const hamburger = document.querySelector(".hamburger");
+
+                if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                    nav.style.width = "0";
+                }
+            });
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>

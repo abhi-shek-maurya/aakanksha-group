@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator | Aakanksha Group Services</title>
+    <link rel="stylesheet" href="calculator.css">
+    <script src="calculator.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+                </a>
+            </div>
+
+            <h1 class="site-title">Aakanksha Group Services</h1>
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </header>
+
+        <main>
+            <section class="emi-calculator">
+                <h2>EMI Calculator</h2>
+
+                <label for="weeklyEmi">Weekly EMI Amount (₹):</label>
+                <input type="number" id="weeklyEmi" name="weeklyEmi" min="30" max="1700" required>
+                <small style="display:block; color: red; margin-top: 0.3rem;" id="emiError"
+                    class="error-message"></small>
+
+                <label for="perid">Total EMI Duration :</label>
+                <input type="number" name="perid" id="perid" class="fixed-input" placeholder="25 Weeks" readonly>
+
+                <label for="downpayment">Downpayment (₹):</label>
+                <input type="number" id="downpayment">
+                <small id="downpaymentError" class="error-message"
+                    style="display: block; color: red; margin-top: 0.3rem;"></small>
+
+                <label for="earlyPayment">Will you clear the loan within 12 weeks?</label>
+                <select id="earlyPayment">
+                    <option value="" disabled selected>Choose Yes or No</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <div class="button-group">
+                    <button type="button" onclick="calculateEMI()">Calculate</button>
+
+                    <button type="button" id="resetButton" class="hidden" onclick="resetCalculator()">Reset</button>
+                </div>
+
+                <!-- Result container (initially hidden) -->
+                <div id="emiResult" class="emi-result hidden"></div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <p>© 2025 Aakanksha Group Services. All Rights Reserved.</p>
+        </footer>
+
+
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById("sideNav");
+                if (nav.style.width === "200px") {
+                    nav.style.width = "0";
+                } else {
+                    nav.style.width = "200px";
+                }
+            }
+            document.addEventListener("click", function (event) {
+                const nav = document.getElementById("sideNav");
+                const hamburger = document.querySelector(".hamburger");
+
+                if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                    nav.style.width = "0";
+                }
+            });
+
+        </script>
+
+        <!-- EMI Calculator -->
+
+        <script>
+            function calculateEMI() {
+                const weeklyEmiInput = document.getElementById("weeklyEmi");
+                const downpaymentInput = document.getElementById("downpayment");
+                const earlyPayment = document.getElementById("earlyPayment").value;
+                const emiError = document.getElementById("emiError");
+                const downpaymentError = document.getElementById("downpaymentError");
+                const emiResult = document.getElementById("emiResult");
+                const resetButton = document.getElementById("resetButton");
+
+                const weeklyEmi = parseInt(weeklyEmiInput.value);
+                const downpayment = parseInt(downpaymentInput.value) || 0;
+
+                // Validation for weekly EMI
+                if (isNaN(weeklyEmi) || weeklyEmi < 30 || weeklyEmi > 1700 || weeklyEmi % 5 !== 0) {
+                    emiError.textContent = "Please enter a valid Weekly EMI amount (₹30 - ₹1700) ending with 0 or 5.";
+                    downpaymentError.textContent = "";
+                    emiResult.classList.add("hidden");
+                    resetButton.classList.add("hidden");
+                    return;
+                } else {
+                    emiError.textContent = "";
+                }
+
+                const totalCost = weeklyEmi * 25;
+
+                // Validation for Downpayment > Total cost
+                if (downpayment > totalCost) {
+                    downpaymentError.textContent = "Downpayment cannot be more than the total product cost.";
+                    emiResult.classList.add("hidden");
+                    resetButton.classList.add("hidden");
+                    return;
+                }
+
+                // Validation for Downpayment > 60%
+                if (downpayment > 0.6 * totalCost) {
+                    downpaymentError.textContent = "";
+                    showCustomPopup("You are paying more than 60% as downpayment.<br><br>We recommend you to go for direct cash purchase instead. You'll get <strong>special discounts 🎉</strong>! 😊");
+                    emiResult.classList.add("hidden");
+                    resetButton.classList.add("hidden");
+                    return;
+                } else {
+                    downpaymentError.textContent = "";
+                }
+
+                const remaining = totalCost - downpayment;
+
+                let discountPercent = 0;
+                if (downpayment > 0) {
+                    const downPercent = (downpayment / totalCost) * 100;
+                    discountPercent = downPercent / 2;
+                }
+
+                const discountedRemaining = remaining - (remaining * discountPercent / 100);
+
+                // Round to nearest multiple of 5
+                let newEmi = Math.round(discountedRemaining / 25);
+                newEmi = Math.round(newEmi / 5) * 5;
+
+                const totalWithDp = downpayment + (newEmi * 25);
+                const earlyClearAmount = totalWithDp - (newEmi * 2);
+
+                let resultHTML = `
+                    <p><strong>Total Product Cost:</strong> ₹${totalCost}</p>
+                    <p><strong>Downpayment:</strong> ₹${downpayment}</p>
+                    <p><strong>New Weekly EMI:</strong> ₹${newEmi}</p>
+                    <p><strong>Total Payable (Including Downpayment):</strong> ₹${totalWithDp}</p>
+                `;
+
+                if (earlyPayment === "yes") {
+                    resultHTML += `
+                        <p><strong>Early Clearance Offer:</strong> ₹${earlyClearAmount}</p>
+                        <p style="color: green; font-weight: 500;">🎉 Includes discount of 2 weeks' EMI for early clearance!</p>
+                    `;
+                }
+
+                emiResult.innerHTML = resultHTML;
+                emiResult.classList.remove("hidden");
+                resetButton.classList.remove("hidden");
+            }
+
+            function resetCalculator() {
+                document.getElementById('weeklyEmi').value = '';
+                document.getElementById('downpayment').value = '';
+                document.getElementById('earlyPayment').value = '';
+                document.getElementById('emiResult').classList.add('hidden');
+                document.getElementById('emiResult').innerHTML = '';
+                document.getElementById('emiError').innerText = '';
+                document.getElementById('downpaymentError').innerText = '';
+                document.getElementById('resetButton').classList.add('hidden');
+            }
+
+            function showCustomPopup(message) {
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = 0;
+                overlay.style.left = 0;
+                overlay.style.right = 0;
+                overlay.style.bottom = 0;
+                overlay.style.backgroundColor = 'rgba(0,0,0,0.4)';
+                overlay.style.zIndex = 999;
+
+                const popup = document.createElement('div');
+                popup.style.position = 'fixed';
+                popup.style.top = '30%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)';
+                popup.style.backgroundColor = '#fff';
+                popup.style.padding = '2rem 1.5rem';
+                popup.style.borderRadius = '12px';
+                popup.style.boxShadow = '0 0 20px rgba(0,0,0,0.2)';
+                popup.style.zIndex = 1000;
+                popup.style.textAlign = 'center';
+                popup.style.maxWidth = '320px';
+                popup.style.fontSize = '16px';
+                popup.style.lineHeight = '1.4';
+
+                popup.innerHTML = `
+        ${message}
+        <br><br>
+        <button id="popup-ok-btn" style="
+            padding: 6px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        ">Okay</button>
+    `;
+
+                document.body.appendChild(overlay);
+                document.body.appendChild(popup);
+
+                document.getElementById('popup-ok-btn').onclick = function () {
+                    document.body.removeChild(popup);
+                    document.body.removeChild(overlay);
+                    resetCalculator();
+                };
+
+                overlay.onclick = function () {
+                    document.body.removeChild(popup);
+                    document.body.removeChild(overlay);
+                    resetCalculator();
+                };
+            }
+
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>

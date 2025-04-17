@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #eef2f3, #dfe9f3);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    margin-top: 80px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #000428, #004e92);
+    width: 100%;
+    padding: 15px 20px;
+    height: 100px;
+    position: relative;
+    position: fixed; 
+    z-index: 10000;
+}
+
+.logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.logo-link {
+    display: inline-block;
+}
+
+.logo-img {
+    display: block;
+    height: auto;
+    max-width: 75px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+
+/* Title */
+.site-title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #f8f8f8;
+    /* White */
+    text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+    .logo img {
+        max-width: 70px;
+        height: auto;
+    }
+    .site-title {
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+/* Hamburger icon */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    padding: 15px;
+    display: block;
+    background: #004e92;
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom-left-radius: 10px;
+}
+
+/* Side nav */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to right, #000428, #004e92);
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding-top: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+.side-nav a {
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.side-nav a:hover {
+    background-color: rgb(12, 57, 180);
+}
+
+.side-nav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 30px;
+    color: white;
+}
+
+.fixed-input {
+    background-color: #f0f0f0;
+    /* Light gray background */
+    border: 1px solid #ccc;
+}
+
+
+.emi-calculator {
+    max-width: 500px;
+    margin: 5rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.emi-calculator h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.emi-calculator label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.emi-calculator input,
+.emi-calculator select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.emi-calculator button {
+    width: 100%;
+    margin-top: 1.5rem;
+    background-color: #0077cc;
+    color: white;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.emi-calculator button:hover {
+    background-color: #005fa3;
+}
+
+#emi-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f1f8ff;
+    border: 1px solid #007bff;
+    border-radius: 6px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.emi-result.hidden {
+    opacity: 1;
+    margin-top: 20px;
+    display: none;
+}
+
+.button-group {
+    margin-top: 1rem;
+}
+
+.button-group button {
+    margin-right: 0.5rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#resetButton {
+    background-color: red;        /* 🔴 Red background */
+    color: white;                     /* White text */
+    border: none;                     /* No border */
+    padding: 10px 20px;               /* Padding around text */
+    font-size: 16px;                  /* Text size */
+    border-radius: 5px;               /* Rounded corners */
+    cursor: pointer;                  /* Pointer cursor on hover */
+    width: 150px;                     /* 🎯 Set your desired width */
+    margin-top: 1rem;                 /* Space above the button */
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 1rem auto;
+}
+
+#resetButton:hover {
+    background-color: rgb(238, 8, 8);        /* Darker red on hover */
+}
+
+footer {
+    background: linear-gradient(to right, #000428, #004e92);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    height: 4em;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        font-size: 14px;
+    }
+
+}

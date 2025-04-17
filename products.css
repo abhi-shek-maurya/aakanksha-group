@@ -1,0 +1,464 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to right, #000428, #004e92);
+  width: 100%;
+  padding: 15px 20px;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  margin-top: 80px;
+}
+
+/* Search bar */
+.header-search-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.header-search-toggle img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(100%);
+  /* ensures it's pure white */
+  position: absolute;
+  right: 80px;
+  top: 20px;
+}
+
+/* Expanding Search Container */
+#expandSearchBar {
+  position: absolute;
+  top: 60px;
+  /* or adjust as needed */
+  right: 0;
+  z-index: 1000;
+  /* lower than hamburger */
+}
+
+
+.search-expand-container {
+  position: absolute;
+  top: 60px;
+  width: 50%;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.search-expand-container.active {
+  display: flex;
+}
+
+.search-expand-container input {
+
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-expand-container button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+.suggestions-list {
+  max-height: 500px;
+  overflow-y: auto;
+  margin-top: 50px;
+  cursor: pointer;
+  list-style: none;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-top: none;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.suggestions-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.suggestions-list li:hover {
+  background-color: skyblue;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-item img {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+
+/* Mobile Responsive */
+@media screen and (max-width: 600px) {
+  .search-expand-container {
+    top: 60px;
+    width: 50%;
+    right: 0;
+  }
+
+  .header-search-toggle img {
+    width: 25px;
+    height: 25px;
+    filter: brightness(100%);
+    /* ensures it's pure white */
+    position: absolute;
+    right: 65px;
+    top: 25px;
+  }
+
+  .suggestions-list {
+    max-height: 500px;
+    width: 100%;
+    font-size: 14px;
+    right: 10px;
+  }
+
+  .logo img {
+    max-width: 70px;
+    height: auto;
+  }
+
+}
+
+
+/* Sorting & Filtering */
+.sort-filter {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-top: 150px;
+}
+
+.sort-filter select {
+  max-width: 100%;
+  width: auto;
+  padding: 6px 10px;
+  font-size: 16px;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .sort-filter select {
+    font-size: 15px;
+  }
+}
+
+
+
+.logo {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.logo-img {
+  display: block;
+  height: auto;
+  max-width: 75px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+
+/* Title */
+.site-title {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  color: #f8f8f8;
+  /* White */
+  text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+  position: relative;
+  text-align: center;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .site-title {
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+/* Hamburger icon */
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  padding: 15px;
+  display: block;
+  background: #004e92;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  border-bottom-left-radius: 10px;
+}
+
+/* Side nav */
+.side-nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  background: linear-gradient(to right, #000428, #004e92);
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}  */
+
+.side-nav a {
+  padding: 10px 25px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.side-nav a:hover {
+  background-color: rgb(12, 57, 180);
+}
+
+.side-nav .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  font-size: 30px;
+  color: white;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 300px auto 100px auto;
+
+}
+
+.product-variant {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  /* Adjust height as per your layout */
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+.product-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 15px;
+  width: 400px;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.product-content h2 {
+  font-size: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* .product-image {
+  max-width: 200px;
+  height: auto;
+  margin: 40px auto;
+} */
+
+.product-image {
+  width: 100%;
+  margin: 40px auto;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.price-text {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Flip container styling */
+
+.emi-buttons {
+  display: flex;
+  gap: 30px;
+  margin: 20px auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.flip-container {
+  perspective: 1000px;
+  width: 140px;
+  height: 45px;
+  will-change: transform;
+}
+
+.flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s ease;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  font-family: sans-serif;
+}
+
+.flip-container.flipped .flip-card {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transform-style: preserve-3d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.flip-front {
+  color: #fff;
+  font-size: 15px;
+  z-index: 2;
+  background: linear-gradient(to right, #000428, #004e92);
+}
+
+.flip-back {
+  background-color: #ff5722;
+  color: #ffffff;
+  transform: rotateY(180deg);
+  font-size: 20px;
+}
+
+
+
+footer {
+  background: linear-gradient(to right, #000428, #004e92);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  height: 4em;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  footer {
+    font-size: 14px;
+  }
+
+}
