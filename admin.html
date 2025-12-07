@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Aakanksha Group</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            color: #333;
+            padding-top: 100px;
+            top: 0px !important;
+            position: static !important;
+        }
+
+
+
+        header {
+            background: linear-gradient(to right, #000428, #004e92);
+            width: 100%;
+            padding: 15px 20px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            z-index: 10000;
+        }
+
+        .logo {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .logo img {
+            max-width: 75px;
+            height: auto;
+        }
+
+        .logo-link {
+            display: inline-block;
+        }
+
+        .logo-img {
+            display: block;
+            height: auto;
+            max-width: 75px;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        /* Title */
+        .site-title {
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: #f8f8f8;
+            /* White */
+            text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+            position: relative;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logo img {
+                max-width: 70px;
+                height: auto;
+            }
+
+            .site-title {
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+
+        /* Hamburger icon */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 15px;
+            display: block;
+            background: #004e92;
+            color: white;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 999;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* Side nav */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to right, #000428, #004e92);
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+        .side-nav a {
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .side-nav a:hover {
+            background-color: rgb(12, 57, 180);
+        }
+
+        .side-nav .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            font-size: 30px;
+            color: white;
+        }
+
+
+        /* Card container */
+        .card,
+        #loanForm {
+            background: linear-gradient(to right, #000428, #004e92);
+            padding: 30px 25px;
+            border-radius: 15px;
+            border: 8px double #004e92;
+            background-clip: padding-box;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            /* ✅ make children fill full width */
+            margin: 40px auto;
+            gap: 10px;
+
+        }
+
+        .card h2,
+        #loanForm h2 {
+            font-size: 28px;
+            color: #a8e6ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Inputs & labels */
+        .card label,
+        #loanForm label {
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .card input,
+        #loanForm input {
+            width: 90%;
+            padding: 15px;
+            margin: 6px 0;
+            border: 2px solid #003366;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        /* Buttons */
+        .card button,
+        #loanForm button {
+            background: #ff5722;
+            color: white;
+            padding: 14px;
+            width: 60%;
+            margin: 25px auto 0 auto;
+            border: none;
+            border-radius: 8px;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card button:hover,
+        #loanForm button:hover {
+            background: #020870dc;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .card,
+            #loanForm {
+                max-width: 100%;
+                width: 100%;
+                padding: 25px 15px;
+            }
+
+            .card button,
+            #loanForm button {
+                width: 80%;
+                font-size: 16px;
+            }
+        }
+
+        #msg {
+            margin-top: 15px;
+            font-weight: 400;
+            color: #00e676;
+            /* ✅ bright green for success */
+            text-align: center;
+            font-size: 20px;
+        }
+
+
+        #loanMsg {
+            margin-top: 15px;
+            font-weight: 400;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .error {
+            border: 2px solid red !important;
+            background: #ffeaea;
+        }
+
+
+        #passwordBox {
+            margin-top: 25px;
+            background: linear-gradient(to right, #001c4d, #003f80);
+            /* ✅ darker blue tone */
+            padding: 20px 25px;
+            border: 2px solid #00bcd4;
+            /* cyan accent */
+            border-radius: 12px;
+            color: #e0f7fa;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+        }
+
+        #passwordBox strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #80eaff;
+            /* lighter cyan for title */
+        }
+
+        #generatedPass {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            user-select: text;
+            /* ✅ allow selecting */
+            transition: transform 0.2s ease;
+        }
+
+        #generatedPass:hover {
+            transform: scale(1.05);
+            /* ✅ hover effect */
+        }
+
+        #generatedPass::after {
+            content: 'Copied!';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00bcd4;
+            color: #fff;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        #generatedPass.copied::after {
+            opacity: 1;
+        }
+
+        .form-divider {
+            max-width: 850px;
+            /* same as forms */
+            width: 100%;
+            margin: 90px auto;
+            border: none;
+            /* remove default border */
+            height: 2px;
+            /* make it thicker/bolder */
+            background-color: #878484eb;
+            /* default-like grey */
+            border-radius: 4px;
+            /* slightly smooth edges */
+        }
+
+        footer {
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            height: 4em;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+            </a>
+        </div>
+        <h1 class="site-title"><span class="notranslate">Aakanksha Group Services</span></h1>
+
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="member login.html">Member Login</a>
+            <a href="calculator.html">EMI Calculator</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+    </header>
+
+    <h1 style="text-align: center; margin-top: 50px;">Admin Panel</h1>
+
+    <div class="card">
+        <h2>Create New Member</h2>
+
+        <label>Member's Name</label>
+        <input type="text" id="memberName" required>
+
+        <label>Member ID:</label>
+        <input type="text" id="memberID" placeholder="e.g. 01" required>
+
+        <label>Phone Number:</label>
+        <input type="text" id="phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+        <label>Husband's Name</label>
+        <input type="text" id="husbandName" required>
+
+        <label>Centre Name</label>
+        <input type="text" id="centreName" required>
+
+        <label>Centre ID:</label>
+        <input type="number" id="centreID">
+
+        <label>Field Officer Name</label>
+        <input type="text" id="foName">
+
+        <label>Field Officer Phone:</label>
+        <input type="text" id="foPhone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            required>
+
+        <label>Centre Leader Name</label>
+        <input type="text" id="clName">
+
+        <label>Centre Leader Phone:</label>
+        <input type="text" id="clPhone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+        <button id="createBtn">Create Member</button>
+
+        <div id="msg"></div>
+        <div id="passwordBox">
+            <strong>Generated Password:</strong>
+            <div id="generatedPass" style="font-size:20px; margin-top:5px;"></div>
+        </div>
+    </div>
+
+    <hr class="form-divider">
+
+
+    <form id="loanForm">
+        <h2>Add Loan</h2>
+        <div class="form-group">
+            <label>Member's Phone Number</label>
+            <input type="text" id="phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="loan_product" placeholder="Eg. Fridge" required>
+        </div>
+
+        <div class="form-group">
+            <label>EWI (₹ per week):</label>
+            <input type="number" id="loan_ewi" placeholder="Eg. 600" required>
+            <p id="ewiError" style="color:red; font-size:14px; margin-top:5px; display:none;"></p>
+        </div>
+
+        <div class="form-group">
+            <label>Total Weeks (EWI tenure):</label>
+            <input type="number" id="loan_weeks" placeholder="25" value="25" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Loan Amount:</label>
+            <input type="number" id="loan_amount" placeholder="Eg. 15000" required>
+        </div>
+
+        <div class="form-group">
+            <label>First EWI Date:</label>
+            <input type="date" id="loan_start" required>
+        </div>
+
+        <button type="submit" id="createLoanBtn">Add Loan</button>
+        <div id="loanMsg"></div>
+    </form>
+
+
+    <footer>
+        <p><span class="notranslate">© 2025 Aakanksha Group Services. All Rights Reserved.</span></p>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const nav = document.getElementById("sideNav");
+            if (nav.style.width === "200px") {
+                nav.style.width = "0";
+            } else {
+                nav.style.width = "200px";
+            }
+        }
+        document.addEventListener("click", function (event) {
+            const nav = document.getElementById("sideNav");
+            const hamburger = document.querySelector(".hamburger");
+
+            if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                nav.style.width = "0";
+            }
+        });
+
+    </script>
+
+
+
+
+    <script>
+
+        AAK.initFirebase();
+        const db = firebase.database();
+
+
+        function generateRandomPassword(length = 8) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$';
+            let pass = '';
+            for (let i = 0; i < length; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return pass;
+        }
+
+        const createBtn = document.getElementById('createBtn');
+        const msg = document.getElementById('msg');
+        const passwordBox = document.getElementById('passwordBox');
+        const generatedPassEl = document.getElementById('generatedPass');
+
+        createBtn.onclick = async () => {
+            msg.textContent = 'Creating member...';
+            msg.style.color = 'blue';
+            passwordBox.style.display = 'none';
+
+            // Reset old errors
+            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+            const phone = document.getElementById('phone').value.trim();
+            const name = document.getElementById('memberName').value.trim();
+            const memberID = document.getElementById('memberID').value.trim();
+            const husbandName = document.getElementById('husbandName').value.trim();
+            const centreName = document.getElementById('centreName').value.trim();
+            const foName = document.getElementById('foName').value.trim();
+            const foPhone = document.getElementById('foPhone').value.trim();
+
+
+            const requiredFields = [
+                { id: 'memberName', value: name },
+                { id: 'memberID', value: memberID },
+                { id: 'husbandName', value: husbandName },
+                { id: 'phone', value: phone },
+                { id: 'centreName', value: centreName },
+                { id: 'foName', value: foName },
+                { id: 'foPhone', value: foPhone },
+            ];
+
+            // ✅ Check required fields
+            let hasEmpty = false;
+            requiredFields.forEach(f => {
+                const el = document.getElementById(f.id);
+                if (!f.value) {
+                    el.classList.add('error');
+                    hasEmpty = true;
+                }
+                // 🔥 Live remove red on typing
+                el.addEventListener('input', () => el.classList.remove('error'), { once: true });
+            });
+
+            if (hasEmpty) {
+                msg.textContent = '⚠️ Please fill all the required fields...';
+                msg.style.color = 'red';
+                return;
+            }
+
+            try {
+                // ✅ Check duplicate phone
+                const snap = await db.ref(`customers/${phone}`).get();
+                if (snap.exists()) {
+                    msg.textContent = '⚠️ Account already exists with this phone';
+                    return;
+                }
+
+                const member = {
+                    name,
+                    memberID,
+                    phone,
+                    husbandName,
+                    centreName,
+                    centreID: document.getElementById('centreID').value.trim(),
+                    foName,
+                    foPhone,
+                    clName: document.getElementById('clName').value.trim(),
+                    clPhone: document.getElementById('clPhone').value.trim(),
+                };
+
+                const pass = generateRandomPassword();
+
+                await db.ref(`customers/${phone}/profile`).set({
+                    ...member,
+                    password: pass,
+                    createdAt: firebase.database.ServerValue.TIMESTAMP
+                });
+
+                msg.textContent = 'Member created successfully ✅';
+                msg.style.color = 'green';
+                generatedPassEl.textContent = pass;
+                passwordBox.style.display = 'block';
+            } catch (e) {
+                console.error(e);
+                msg.textContent = 'Error: ' + e.message;
+            }
+        };
+
+
+        // Copied password
+
+        const generatedPass = document.getElementById('generatedPass');
+
+        generatedPass.addEventListener('click', () => {
+            const text = generatedPass.textContent.trim();
+            if (!text) return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                generatedPass.classList.add('copied');
+                setTimeout(() => generatedPass.classList.remove('copied'), 1500);
+            });
+        });
+
+
+
+
+        // Add loan
+        const loanForm = document.getElementById('loanForm');
+        const loanMsg = document.getElementById('loanMsg');
+
+        loanForm.onsubmit = async (e) => {
+            e.preventDefault(); // stop form refresh
+            loanMsg.textContent = 'Adding loan...';
+            loanMsg.style.color = 'blue';
+
+            const phone = document.getElementById('phone').value.trim();   // ✅ fixed id
+            const product = document.getElementById('loan_product').value.trim();
+            const amount = Number(document.getElementById('loan_amount').value);
+            const weeks = Number(document.getElementById('loan_weeks').value);
+            const ewi = Number(document.getElementById('loan_ewi').value);
+            const startDate = document.getElementById('loan_start').value;
+
+            try {
+                // ✅ Check if member exists first
+                const profileSnap = await db.ref(`customers/${phone}`).get();
+                if (!profileSnap.exists()) {
+                    loanMsg.textContent = '⚠️ Member not found. Please check phone number.';
+                    loanMsg.style.color = 'red';
+                    return;
+                }
+
+                // ✅ Create a unique loan entry
+                const loanRef = db.ref(`customers/${phone}/loans`).push();
+                await loanRef.set({
+                    product,
+                    amount,
+                    tenureWeeks: weeks,
+                    ewi,
+                    startDate,
+                    status: "Active",
+                    createdAt: firebase.database.ServerValue.TIMESTAMP
+                });
+
+                loanMsg.textContent = '✅ Loan added successfully';
+                loanMsg.style.color = 'green';
+                loanForm.reset();
+            } catch (err) {
+                console.error(err);
+                loanMsg.textContent = 'Error: ' + err.message;
+                loanMsg.style.color = 'red';
+            }
+        };
+
+        // Auto calculate loan
+        const ewiInput = document.getElementById('loan_ewi');
+        const amountInput = document.getElementById('loan_amount');
+        const weeksInput = document.getElementById('loan_weeks');
+        const ewiError = document.getElementById('ewiError');
+        const createLoanBtn = document.getElementById('createLoanBtn');
+
+        weeksInput.value = 25; // Default weeks
+
+        ewiInput.addEventListener('input', () => {
+            const ewi = parseInt(ewiInput.value, 10);
+
+            // Reset
+            ewiError.style.display = 'none';
+            createLoanBtn.disabled = false;
+
+            if (isNaN(ewi)) {
+                amountInput.value = '';
+                return;
+            }
+
+            if (ewi < 30 || ewi > 1700) {
+                ewiError.textContent = "EWI must be between ₹30 and ₹1700.";
+                ewiError.style.display = 'block';
+                createLoanBtn.disabled = true;
+                amountInput.value = '';
+                return;
+            }
+
+            if (ewi % 5 !== 0) {
+                ewiError.textContent = "EWI must end with 0 or 5 (like 600, 605, 1610).";
+                ewiError.style.display = 'block';
+                createLoanBtn.disabled = true;
+                amountInput.value = '';
+                return;
+            }
+
+            // Valid EWI → auto calculate amount
+            amountInput.value = ewi * 25;
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

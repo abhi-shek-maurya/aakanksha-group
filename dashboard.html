@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Aakanksha Group</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* ---------------- GLOBAL ---------------- */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+        }
+
+
+        header {
+            background: linear-gradient(to right, #000428, #004e92);
+            width: 100%;
+            padding: 15px 20px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            z-index: 10000;
+        }
+
+
+        /* Search bar */
+        .header-search-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-search-toggle img {
+            width: 28px;
+            height: 28px;
+            filter: brightness(100%);
+            /* ensures it's pure white */
+            position: absolute;
+            right: 80px;
+            top: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+
+            .header-search-toggle img {
+                width: 25px;
+                height: 25px;
+                filter: brightness(100%);
+                /* ensures it's pure white */
+                position: absolute;
+                right: 65px;
+                top: 25px;
+            }
+
+        }
+
+        /* Expanding Search Container */
+        #expandSearchBar {
+            position: absolute;
+            top: 60px;
+            /* or adjust as needed */
+            right: 0;
+            z-index: 1000;
+            /* lower than hamburger */
+        }
+
+
+        .search-expand-container {
+            position: absolute;
+            top: 60px;
+            width: 50%;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-expand-container.active {
+            display: flex;
+        }
+
+        .search-expand-container input {
+
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .search-expand-container button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .logo {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .logo-link {
+            display: inline-block;
+        }
+
+        .logo-img {
+            display: block;
+            height: auto;
+            max-width: 75px;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .logo img {
+            max-width: 75px;
+            height: auto;
+        }
+
+        /* Title */
+        .site-title {
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: #f8f8f8;
+            /* White */
+            text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+            position: relative;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logo img {
+                max-width: 70px;
+                height: auto;
+            }
+
+            .site-title {
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+
+        /* Hamburger icon */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 15px;
+            display: block;
+            background: #004e92;
+            color: white;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 999;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* Side nav */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to right, #000428, #004e92);
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+        .side-nav a {
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .side-nav a:hover {
+            background-color: rgb(12, 57, 180);
+        }
+
+        .side-nav .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            font-size: 30px;
+            color: white;
+        }
+
+        /* ---------------- PROFILE CARD ---------------- */
+        .profile-card {
+            background: linear-gradient(to right, #000428, #004e92);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        .profile-card h2 {
+            text-align: center;
+            margin: 0 0 15px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #a8e6ff;
+        }
+
+        .profile-details {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .profile-left p,
+        .profile-right p {
+            margin: 6px 0;
+            font-size: 14px;
+            color: white;
+        }
+
+        .profile-left span,
+        .profile-right span {
+            font-weight: 600;
+            color: white;
+        }
+
+        /* ---------------- EMI SECTION ---------------- */
+        /* ---------------- EMI HEADER ---------------- */
+        .emi-header {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            margin-bottom: 15px;
+        }
+
+        .emi-header h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .emi-meta div {
+            font-size: 13px;
+            margin-top: 4px;
+            color: #444;
+        }
+
+        /* ---------------- WEEK LIST ---------------- */
+        .weekly-list {
+            margin-top: 10px;
+        }
+
+        /* Week Card */
+        .week-card {
+            background: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: transform .15s ease;
+            border-left: 6px solid transparent;
+        }
+
+        .week-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* === STATUS COLORS === */
+        .week-card.paid {
+            border-left: 4px solid #00c48c;
+        }
+
+        .week-card.adjusted {
+            border-left: 4px solid #ff9800;
+            background: #fff8ef;
+        }
+
+        .week-card.due {
+            border-left: 4px solid #f44336;
+        }
+
+        .week-card.current-due {
+            box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.15);
+        }
+
+
+        .week-card.upcoming {
+            border-left: 4px solid #9e9e9e;
+            background: #fafafa;
+            opacity: 0.85;
+        }
+
+
+
+        /* Week Left */
+        .week-left .week-num {
+            font-size: 15px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .week-left .week-date {
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* Week Right */
+        .week-right {
+            margin-top: 8px;
+            display: none;
+            /* collapsed by default */
+        }
+
+        .week-right.show {
+            display: block;
+        }
+
+        /* Amount & Outstanding */
+        .week-amount {
+            font-size: 16px;
+            font-weight: bold;
+            color: #222;
+            margin-top: 8px;
+        }
+
+        .week-outstanding {
+            font-size: 13px;
+            margin-top: 6px;
+            color: #777;
+        }
+
+        /* Badge */
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .badge.paid {
+            background: #00c85320;
+            color: white;
+        }
+
+        .badge.due {
+            background: #ff174420;
+            color: white;
+        }
+
+        .badge.adjusted {
+            background: #ffd54f40;
+            color: white;
+        }
+
+        /* ---------------- TABS ---------------- */
+        .tabs {
+            display: flex;
+            margin-bottom: 18px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            cursor: pointer;
+            font-weight: 600;
+            background: #eef0f4;
+            border-radius: 10px;
+            margin-right: 6px;
+            font-size: 14px;
+            color: #555;
+            transition: 0.25s;
+        }
+
+        .tab.active {
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+        }
+
+        /* ---------------- MONTH HEADER ---------------- */
+        .month-header {
+            background: #f7f9fc;
+            padding: 10px 12px;
+            border-left: 4px solid #28b17d;
+            font-weight: 600;
+            font-size: 15px;
+            color: #222;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+
+        /* ---------------- LOAN CARD ---------------- */
+        .loan-card {
+            padding: 16px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 14px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .loan-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .loan-info h3 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 700;
+            color: #1c1c1c;
+        }
+
+        .loan-info p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* ---------------- PROGRESS BAR ---------------- */
+        .progress-bar {
+            width: 160px;
+            height: 8px;
+            background: #e6e9ee;
+            border-radius: 10px;
+            margin: 8px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #28b17d;
+            width: 0;
+            transition: width .3s ease;
+        }
+
+        /* ---------------- STATUS BADGES ---------------- */
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            border-radius: 6px;
+            text-transform: capitalize;
+        }
+
+        .status-badge.active {
+            background: #f9a825;
+            /* yellow */
+        }
+
+        .status-badge.completed {
+            background: #28b17d;
+            /* green */
+        }
+
+        /* ---------------- WEEK TABLE ---------------- */
+        .week-table {
+            margin-top: 12px;
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 13px;
+        }
+
+        .week-table th {
+            background: #f0f2f5;
+            padding: 8px;
+            font-weight: 700;
+        }
+
+        .week-table td {
+            padding: 8px;
+            text-align: center;
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* BADGES FOR PAID / ADJUSTED / DUE */
+
+        .badge.paid {
+            background: #28b17d;
+        }
+
+        .badge.adjusted {
+            background: #ff9800;
+        }
+
+        .badge.due {
+            background: #e53935;
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+        @media (max-width: 600px) {
+            .profile-details {
+                flex-direction: column;
+            }
+
+            .loan-card {
+                flex-direction: column;
+            }
+
+            .progress-bar {
+                width: 100%;
+            }
+        }
+
+
+        /* icon button */
+        .icon-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .icon-btn:hover {
+            background: rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+
+        /* ===== enhanced week card layout (keeps previous classes) ===== */
+        .week-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+        }
+
+        /* left area */
+        .week-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* collapsed right (compact) */
+        .week-right-collapsed {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 120px;
+            justify-content: flex-end;
+        }
+
+        .week-details {
+            display: none;
+            margin-top: 10px;
+            animation: fadeDown 0.25s ease;
+        }
+
+        .week-details.show {
+            display: block;
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* small rounded icon container for status icons */
+        .status-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        /* icons colors */
+        .status-icon.paid {
+            background: linear-gradient(135deg, #e8fff3, #e0ffe9);
+            color: #007a43;
+        }
+
+        .status-icon.adjusted {
+            background: linear-gradient(135deg, #fff7e0, #fff3d6);
+            color: #a25a00;
+        }
+
+        .status-icon.due {
+            background: linear-gradient(135deg, #ffecec, #ffe8e8);
+            color: #9e0b0b;
+        }
+
+        /* small amount shown when paid */
+        .week-amount-collapsed {
+            font-weight: 700;
+            color: #007a43;
+            font-size: 15px;
+        }
+
+        /* badge small */
+        .badge-small {
+            border-radius: 14px;
+            padding: 6px 10px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-small.paid {
+            background: #e8fff3;
+            color: #007a43;
+        }
+
+        .badge-small.adjusted {
+            background: #fff7e0;
+            color: #a25a00;
+        }
+
+        .badge-small.due {
+            background: #ffecec;
+            color: #b71c1c;
+        }
+
+        .badge-small.upcoming {
+            background: #eeeeee;
+            color: #666;
+        }
+
+
+        /* chevron icon right */
+        .chev {
+            transition: transform 260ms ease;
+            display: inline-block;
+        }
+
+        .chev.rot {
+            transform: rotate(180deg);
+        }
+
+        /* detail rows */
+        .detail-row {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #2e2e2e;
+        }
+
+        /* paid date small */
+        .detail-row .muted {
+            color: #546;
+            font-size: 13px;
+            margin-left: 6px;
+        }
+
+        /* responsive tweaks */
+        @media (max-width:720px) {
+            .week-right-collapsed {
+                min-width: 90px;
+            }
+
+            .status-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        footer {
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            height: 4em;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <header>
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+                </a>
+            </div>
+            <h1 class="site-title"><span class="notranslate">Aakanksha Group Services</span></h1>
+            <!-- search icon -->
+            <a href="products.html"> <button id="searchToggle" class="header-search-toggle" aria-label="Search">
+                    <img src="https://img.icons8.com/ios-filled/24/ffffff/search--v1.png" alt="Search Icon">
+                </button>
+                <!-- Expanding Search Bar -->
+                <div id="expandSearchBar" class="search-expand-container">
+                    <input type="text" id="productSearchInput" placeholder="Search for products..." autocomplete="off">
+                    <button id="closeSearchBar" aria-label="Close Search">×</button>
+                    <ul id="suggestionsList" class="suggestions-list"></ul>
+                </div>
+            </a>
+
+
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="member login.html">Member Login</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </header>
+
+        <main>
+
+            <div class="profile-card">
+                <h2>Member Profile</h2>
+                <div class="profile-details">
+                    <div class="profile-left">
+                        <p><strong>Member's Name:</strong> <span id="m_name"></span></p>
+                        <p><strong>Member ID:</strong> <span id="m_id"></span></p>
+                        <p><strong>Phone no:</strong> <span id="m_phone"></span></p>
+                        <p><strong>Husband's Name:</strong> <span id="m_husband"></span></p>
+                        <p><strong>Centre:</strong> <span id="m_centre"></span></p>
+                    </div>
+                    <div class="profile-right">
+                        <p><strong>Centre ID:</strong> <span id="m_centreId"></span></p>
+                        <p><strong>F.O. Name:</strong> <span id="m_foName"></span></p>
+                        <p><strong>F.O. Phone no:</strong> <span id="m_foPhone"></span></p>
+                        <p><strong>Centre Leader:</strong> <span id="m_leader"></span></p>
+                        <p><strong>Centre Leader Phone no:</strong> <span id="m_leaderPhone"></span></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Loan Section (Dashboard) -->
+            <div class="emi-section">
+                <div class="tabs">
+                    <button class="tab active" id="toPayTab">EWIs to be Paid</button>
+                    <button class="tab" id="completedTab">Completed EWIs</button>
+                </div>
+
+                <div id="emiContainer"></div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p><span class="notranslate">© 2025 Aakanksha Group Services. All Rights Reserved.</span></p>
+        </footer>
+
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById("sideNav");
+                if (nav.style.width === "200px") {
+                    nav.style.width = "0";
+                } else {
+                    nav.style.width = "200px";
+                }
+            }
+            document.addEventListener("click", function (event) {
+                const nav = document.getElementById("sideNav");
+                const hamburger = document.querySelector(".hamburger");
+
+                if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                    nav.style.width = "0";
+                }
+            });
+
+        </script>
+
+        <script>
+
+            AAK.initFirebase();
+            const db = firebase.database();
+
+            // Sheet config
+            const SHEET_ID = "1srLMZdXTrw1JvQmo650LYAWV39rzzj9UDJ_OTIn1Ozw";
+            const SHEET_NAME = "Web demo";
+            const SHEET_URL = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(SHEET_NAME)}`;
+
+            // Elements
+            const emiContainer = document.getElementById("emiContainer");
+            const toPayTab = document.getElementById("toPayTab");
+            const completedTab = document.getElementById("completedTab");
+            const openSheetBtn = document.getElementById("openSheetBtn");
+
+            // Profile/login
+            const phone = localStorage.getItem('loggedInPhone');
+            let PROFILE = null;
+            try { PROFILE = JSON.parse(localStorage.getItem('loggedInProfile') || "null"); } catch (e) { PROFILE = null; }
+
+            // Utilities
+            function numberWithCommas(x) { return (Number(x) || 0).toLocaleString(); }
+            function escapeHtml(text) { if (!text && text !== 0) return ""; return String(text).replace(/[&<>"'`]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '`': '&#96;' }[m])); }
+            function safeNum(v) { const n = Number(v); return isNaN(n) ? 0 : n; }
+            function formatDateFriendly(d) { if (!d) return '---'; try { return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); } catch { return String(d); } }
+
+            function parseDateFlexible(s) {
+                if (!s && s !== 0) return null;
+                let d = new Date(s);
+                if (!isNaN(d.getTime())) return d;
+                if (typeof s === "string") {
+                    let m1 = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+                    if (m1) return new Date(Number(m1[3]), Number(m1[2]) - 1, Number(m1[1]));
+                    let m2 = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2})$/);
+                    if (m2) {
+                        const day = Number(m2[1]), month = Number(m2[2]) - 1, year = 2000 + Number(m2[3]);
+                        return new Date(year, month, day);
+                    }
+                    let m3 = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+                    if (m3) return new Date(Number(m3[3]), Number(m3[2]) - 1, Number(m3[1]));
+                }
+                return null;
+            }
+
+            // Fetch sheet rows (opensheet)
+            async function fetchSheetRows() {
+                const res = await fetch(SHEET_URL);
+                if (!res.ok) throw new Error('Sheet fetch failed: ' + res.status);
+                return await res.json();
+            }
+
+            // Normalize row => safe object
+            function normalizeRow(r) {
+                return {
+                    memberID: (r.memberID || r.MemberID || "").toString().trim(),
+                    name: r.name || r.Name || "",
+                    husbandName: r.husbandName || r.HusbandName || "",
+                    phone: (r.phone || r.Phone || "").toString().trim(),
+                    product: r.product || r.Product || "",
+                    weekNumber: safeNum(r.weekNumber || r.week || 0),
+                    ewiAmount: safeNum(r.ewiAmount || 0),
+                    adj: (r.adj || r.ADV || r.ADJ || r.adjusted || "").toString().trim(),
+                    amountPaid: safeNum(r.amountPaid || r.Total || 0),
+                    outstanding: safeNum(r.outstanding || 0),
+                    disDate: r.disDate || r.DisDate || r.DISDATE || r["DIS DATE"] || r["dis date"] || r["dis_date"] || "",
+                    firstEmi: r.firstEmi || r.FirstEmi || r.FIRSTEMI || r["FIRST EMI"] || r["first emi"] || r.firstemi || r["first_emi"] || "",
+                    paidDate: r.paidDate || r.paymentDate || r.datePaid || r["paidDate"] || r["paymentDate"] || r["datePaid"] || "",
+                    BR: safeNum(r.BR || r.br || r.Br || 0),
+                    ADV: safeNum(r.ADV || r.adv || r.Adv || 0),
+                    statusField: (r.status || r.Status || "").toString().trim().toLowerCase(),
+                    _raw: r
+                };
+            }
+
+            // Render profile (cached or fresh)
+            function renderProfile(data) {
+                if (!data) return;
+                PROFILE = data;
+                document.getElementById('m_name').textContent = data.name || '';
+                document.getElementById('m_id').textContent = data.memberID || '';
+                document.getElementById('m_phone').textContent = data.phone || '';
+                document.getElementById('m_husband').textContent = data.husbandName || '';
+                document.getElementById('m_centre').textContent = data.centreName || '';
+                document.getElementById('m_centreId').textContent = data.centreID || '';
+                document.getElementById('m_foName').textContent = data.foName || '';
+                document.getElementById('m_foPhone').textContent = data.foPhone || '';
+                document.getElementById('m_leader').textContent = data.clName || '';
+                document.getElementById('m_leaderPhone').textContent = data.clPhone || '';
+            }
+            if (PROFILE) renderProfile(PROFILE);
+
+            // Refresh profile from Firebase in background
+            async function refreshProfileFromFirebase() {
+                if (!phone) { window.location.href = 'login.html'; return; }
+                try {
+                    const snap = await db.ref(`customers/${phone}/profile`).get();
+                    if (snap.exists()) {
+                        const data = snap.val();
+                        renderProfile(data);
+                        localStorage.setItem('loggedInProfile', JSON.stringify(data));
+                    }
+                } catch (err) {
+                    console.error('Profile fetch error:', err);
+                }
+            }
+            refreshProfileFromFirebase();
+
+            // is loan fully completed
+            function isLoanFullyCompleted(weeksArr) {
+                const okCount = weeksArr.filter(w => w.status === 'paid' || w.status === 'adjusted').length;
+                return okCount >= 25;
+            }
+
+            // Replace your existing loadAndRenderWeekly() with this function
+            /* FINAL "PASSBOOK STYLE" LOGIC
+       - Keeps the "Hub" logic for the Latest Transaction (handling ADV/BR correctly).
+       - For Historical Weeks: Fetches specific 'paidDate' and 'outstanding' from previous sheet rows.
+       - Shows Outstanding and Date for ALL weeks if data exists.
+    */
+            // --- MAIN RENDER FUNCTION ---
+            async function loadAndRenderWeekly() {
+                emiContainer.innerHTML = '<div style="padding:20px;text-align:center;">Loading Loan History...</div>';
+
+                try {
+                    const rows = await fetchSheetRows();
+                    if (!rows || rows.length === 0) {
+                        emiContainer.innerHTML = '<p style="text-align:center;color:#666;">No sheet data.</p>';
+                        return;
+                    }
+
+                    const memberIdFromProfile = PROFILE && PROFILE.memberID ? PROFILE.memberID.toString().trim() : null;
+                    const phoneId = phone ? phone.toString().trim() : null;
+
+                    const filtered = rows.filter(r => {
+                        const mid = (r.memberID || r.MemberID || '').toString().trim();
+                        const ph = (r.phone || r.Phone || '').toString().trim();
+                        if (memberIdFromProfile && mid && mid === memberIdFromProfile) return true;
+                        if (phoneId && ph && ph === phoneId) return true;
+                        return false;
+                    });
+
+                    if (filtered.length === 0) {
+                        emiContainer.innerHTML = '<p style="text-align:center;color:#666;">No record found for this member.</p>';
+                        return;
+                    }
+
+                    const norm = filtered.map(normalizeRow);
+                    norm.sort((a, b) => b.weekNumber - a.weekNumber);
+                    const latest = norm[0];
+
+
+                    // --- TAB LOGIC CHECK ---
+                    // 1. Determine if loan is completed (25 weeks reached)
+                    const TOTAL_WEEKS = 25;
+                    const recordedWeek = Math.min(TOTAL_WEEKS, Math.max(0, latest.weekNumber));
+                    const isLoanCompleted = (recordedWeek >= TOTAL_WEEKS);
+
+                    // 2. Determine which tab is currently active
+                    const isToPayTabActive = document.getElementById("toPayTab").classList.contains("active");
+
+                    // 3. Filter Display based on Tab + Status
+                    if (isToPayTabActive && isLoanCompleted) {
+                        emiContainer.innerHTML = `
+                    <div style="text-align:center; padding:40px; color:#666;">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#28b17d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <h3>Hurray! No Dues.</h3>
+                        <p>Your loan is fully completed.</p>
+                        <button onclick="document.getElementById('completedTab').click()" style="background:#28b17d; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; margin-top:10px;">View Completed Loans</button>
+                    </div>`;
+                        return;
+                    }
+
+                    if (!isToPayTabActive && !isLoanCompleted) {
+                        // Completed Tab selected, but loan is active
+                        emiContainer.innerHTML = `
+                    <div style="text-align:center; padding:40px; color:#666;">
+                        <h3>No Completed Loans</h3>
+                        <p>Your current loan is still active.</p>
+                        <button onclick="document.getElementById('toPayTab').click()" style="background:#0f2130; color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer; margin-top:10px;">View Active Loan</button>
+                    </div>`;
+                        return;
+                    }
+
+                    // --- PROCEED TO RENDER TIMELINE ---
+
+                    let firstEmiDate = parseDateFlexible(latest.firstEmi || latest.disDate);
+                    if (!firstEmiDate) {
+                        for (let r of norm) {
+                            let d = parseDateFlexible(r.firstEmi || r.disDate);
+                            if (d) { firstEmiDate = d; break; }
+                        }
+                    }
+                    if (!firstEmiDate) {
+                        emiContainer.innerHTML = '<p style="color:red;text-align:center;">First EMI Date missing.</p>';
+                        return;
+                    }
+
+                    // 1. Determine EMI
+                    let weeklyEMI = latest.ewiAmount;
+                    if (weeklyEMI <= 1) weeklyEMI = 570;
+
+                    const totalLoanAmount = weeklyEMI * TOTAL_WEEKS;
+
+                    // 2. Hub Calc
+                    const advWeeks = Math.floor(latest.ADV / weeklyEMI);
+                    const brWeeks = Math.floor(latest.BR / weeklyEMI);
+
+                    const currentHubWeek = recordedWeek - advWeeks;
+                    const brStartWeek = currentHubWeek - brWeeks;
+
+                    const weeksMap = {};
+                    norm.forEach(r => { if (r.weekNumber) weeksMap[r.weekNumber] = r; });
+
+                    const weeks = [];
+                    for (let w = 1; w <= TOTAL_WEEKS; w++) {
+                        const weekDate = new Date(firstEmiDate.getTime() + (w - 1) * 7 * 24 * 60 * 60 * 1000);
+
+                        let status = 'upcoming';
+                        let amountPaid = 0;
+                        let paidDate = '';
+                        let outstanding = 0;
+                        let remark = '';
+
+                        // --- LOGIC GATES ---
+
+                        if (w === currentHubWeek) {
+                            // === HUB ===
+                            status = 'paid';
+                            amountPaid = latest.amountPaid;
+                            paidDate = latest.paidDate || formatDateFriendly(new Date());
+                            outstanding = latest.outstanding;
+
+                            if (brWeeks > 0 || advWeeks > 0) {
+                                let parts = [];
+                                if (brWeeks > 0) parts.push(`Includes ${brWeeks} BR`);
+                                if (advWeeks > 0) parts.push(`Includes ${advWeeks} Adv`);
+                                remark = parts.join(', ');
+                            }
+                        }
+                        else if (w > currentHubWeek && w <= recordedWeek) {
+                            // === ADJUSTED ===
+                            status = 'adjusted';
+                            remark = 'Advance Adjusted';
+                        }
+                        else if (w >= brStartWeek && w < currentHubWeek) {
+                            // === DUE ===
+                            status = 'due';
+                            remark = 'Cleared via Backlog';
+                        }
+                        else if (w < brStartWeek) {
+                            // === HISTORY ===
+                            status = 'paid';
+                            if (weeksMap[w]) {
+                                amountPaid = weeksMap[w].amountPaid;
+                                paidDate = weeksMap[w].paidDate || formatDateFriendly(weekDate);
+                                outstanding = weeksMap[w].outstanding;
+                            } else {
+                                // Mathematical Fill
+                                amountPaid = weeklyEMI;
+                                paidDate = formatDateFriendly(weekDate);
+                                outstanding = totalLoanAmount - (w * weeklyEMI);
+                            }
+                        }
+                        else {
+                            status = 'upcoming';
+                        }
+
+                        weeks.push({ week: w, date: weekDate, status, amountPaid, paidDate, outstanding, remark });
+                    }
+
+                    // --- RENDER ---
+                    let out = `<div class="emi-header">
+                        <h3>Loan Schedule</h3>
+                        <div class="emi-meta">
+                            <div><strong>Product(s):</strong> ${escapeHtml(latest.product)}</div>
+                            <div><strong>EWI (per week):</strong> ₹${numberWithCommas(weeklyEMI)}</div>
+                            <div><strong>Started on:</strong> ${formatDateFriendly(firstEmiDate)}</div>
+                            <div><strong>Last recorded week:</strong> ${recordedWeek}</div>
+                        </div>
+                       </div>
+                       <div class="weekly-list">`;
+
+                    weeks.forEach(wr => {
+                        let rightSide = '';
+
+                        if (wr.status === 'paid') {
+                            const amtText = wr.amountPaid > 0 ? `₹${numberWithCommas(wr.amountPaid)}` : '';
+                            rightSide = `<div class="week-right-collapsed">${amtText ? `<div class="week-amount-collapsed">${amtText}</div>` : ''}<div class="badge paid">PAID</div></div>`;
+                        } else if (wr.status === 'adjusted') {
+                            rightSide = `<div class="week-right-collapsed"><div class="badge adjusted">ADJUSTED</div></div>`;
+                        } else if (wr.status === 'due') {
+                            rightSide = `<div class="week-right-collapsed"><div class="badge due">DUE</div></div>`;
+                        } else {
+                            rightSide = `<div class="week-right-collapsed"><div class="badge upcoming">UPCOMING</div></div>`;
+                        }
+
+                        const isHighlight = (wr.week === currentHubWeek) || (wr.status === 'due');
+
+                        // FIX: Check for >= 0 so that "0" is displayed
+                        const showOutstanding = (wr.outstanding !== null && wr.outstanding !== undefined && !isNaN(wr.outstanding));
+
+                        out += `
+                <div class="week-card ${wr.status} ${isHighlight ? 'current-due' : ''}" data-week="${wr.week}">
+                    <div class="week-left">
+                        <div class="week-num">Week ${wr.week}</div>
+                        <div class="week-date">${formatDateFriendly(wr.date)}</div>
+                    </div>
+                    ${rightSide}
+                    <div class="week-details">
+                        ${wr.status === 'paid' ? `<div class="detail-row"><strong>Paid:</strong> ₹${numberWithCommas(wr.amountPaid)}</div>` : ''}
+                        
+                        ${(wr.status === 'paid' || wr.paidDate) ? `<div class="detail-row"><strong>Date:</strong> ${escapeHtml(wr.paidDate)}</div>` : ''}
+                        
+                        ${wr.status !== 'paid' ? `<div class="detail-row"><strong>Status:</strong> <span class="badge ${wr.status}">${wr.status.toUpperCase()}</span></div>` : ''}
+                        
+                        ${wr.status === 'paid' ? `<div class="detail-row" style="color:#d32f2f"><strong>Outstanding:</strong> ₹${numberWithCommas(wr.outstanding)}</div>` : ''}
+                        
+                        ${wr.remark ? `<div class="detail-row"><strong>Note:</strong> ${escapeHtml(wr.remark)}</div>` : ''}
+                    </div>
+                </div>`;
+                    });
+
+                    out += `</div>`;
+                    emiContainer.innerHTML = out;
+
+                    document.querySelectorAll('.week-card').forEach(card => {
+                        card.addEventListener('click', () => {
+                            const details = card.querySelector('.week-details');
+                            if (details) details.classList.toggle('show');
+                        });
+                    });
+
+                    const hub = document.querySelector(`.week-card[data-week="${currentHubWeek}"] .week-details`);
+                    if (hub) hub.classList.add('show');
+
+                } catch (err) {
+                    console.error(err);
+                    emiContainer.innerHTML = `<p style="color:red;text-align:center;">Error: ${err.message}</p>`;
+                }
+            }
+
+            // --- INIT ---
+            if (toPayTab) toPayTab.onclick = () => { toPayTab.classList.add('active'); completedTab.classList.remove('active'); loadAndRenderWeekly(); };
+            if (completedTab) completedTab.onclick = () => { completedTab.classList.add('active'); toPayTab.classList.remove('active'); loadAndRenderWeekly(); };
+            if (openSheetBtn) openSheetBtn.addEventListener('click', () => { window.open(`https://docs.google.com/spreadsheets/d/${SHEET_ID}`, '_blank'); });
+
+            setTimeout(loadAndRenderWeekly, 500);
+
+        </script>
+
+    </div>
+</body>
+
+</html>

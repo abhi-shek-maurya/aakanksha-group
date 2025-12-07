@@ -36,6 +36,35 @@ main {
   margin-top: 80px;
 }
 
+.product-disclaimer {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 12px 20px;
+  height: 100px;
+  margin: 20px auto 20px auto;
+  font-size: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.product-disclaimer p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .product-disclaimer p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+}
+
 /* Search bar */
 .header-search-toggle {
   background: none;
@@ -157,7 +186,7 @@ main {
 @media screen and (max-width: 600px) {
   .search-expand-container {
     top: 60px;
-    width: 50%;
+    width: 80%;
     right: 0;
   }
 
@@ -185,7 +214,6 @@ main {
 
 }
 
-
 /* Sorting & Filtering */
 .sort-filter {
   padding: 10px;
@@ -194,7 +222,7 @@ main {
   align-items: center;
   gap: 10px;
   position: absolute;
-  top: 2px;
+  top: 70px;
   right: 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -215,8 +243,6 @@ main {
     font-size: 15px;
   }
 }
-
-
 
 .logo {
   position: absolute;
@@ -322,8 +348,7 @@ main {
   gap: 20px;
   justify-content: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 300px auto 100px auto;
-
+  margin: 90px auto 80px auto;
 }
 
 .product-variant {
@@ -445,7 +470,11 @@ main {
   font-size: 20px;
 }
 
-
+.ending {
+  text-align: center;
+  font-family: sans-serif;
+  margin-bottom: 70px;
+}
 
 footer {
   background: linear-gradient(to right, #000428, #004e92);
