@@ -22,7 +22,7 @@
                     <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
                 </a>
             </div>
-            <h1 class="site-title">Aakanksha Group Services</h1>
+            <h1 class="site-title">Aakanksha Group</h1>
             <!-- search icon -->
             <button id="searchToggle" class="header-search-toggle" aria-label="Search">
                 <img src="https://img.icons8.com/ios-filled/24/ffffff/search--v1.png" alt="Search Icon">
@@ -38,8 +38,9 @@
             <div id="sideNav" class="side-nav">
                 <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
                 <a href="index.html">Home</a>
-                <a href="products.html">Products</a>
                 <a href="member login.html">Member Login</a>
+                <a href="about us.html">About Us</a>
+                <a href="career.html">Career</a>
                 <a href="calculator.html">EMI Calculator</a>
                 <a href="contact.html">Contact Us</a>
             </div>
@@ -3017,6 +3018,56 @@
                 sorted.forEach(product => productGrid.appendChild(product));
             });
         </script>
+
+        <!-- Replacing show EMI buttons -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // 1. Select all the hidden old button containers
+                const oldButtonContainers = document.querySelectorAll('.emi-buttons');
+
+                // 2. Loop through and swap them
+                oldButtonContainers.forEach(container => {
+
+                    // Create the new button
+                    const newBtn = document.createElement('button');
+                    newBtn.className = 'get-now-btn';
+                    newBtn.innerText = 'Get It Now';
+
+                    // 3. ADD THE LINK LOGIC HERE
+                    newBtn.onclick = function () {
+                        // Redirects to index.html and scrolls to the #submit-form section
+                        window.location.href = 'index.html#submit-form';
+                    };
+
+                    // 4. Swap! The hidden .emi-buttons is replaced by the visible .get-now-btn
+                    container.replaceWith(newBtn);
+                });
+            });
+        </script>
+
+        <!-- Shuffling -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // 1. Select the grid container
+                const grid = document.querySelector('.product-grid');
+
+                // 2. Select all product cards inside it
+                const cards = Array.from(grid.children);
+
+                // 3. The Shuffle Algorithm (Fisher-Yates)
+                // This mixes the array of cards randomly
+                for (let i = cards.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [cards[i], cards[j]] = [cards[j], cards[i]];
+                }
+
+                // 4. Put the cards back into the grid in the new random order
+                cards.forEach(card => {
+                    grid.appendChild(card);
+                });
+            });
+        </script>
+
 
     </div>
 

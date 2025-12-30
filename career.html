@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career | Aakanksha Group Services</title>
+    <script src="contact.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, #000428, #004e92);
+            width: 100%;
+            padding: 15px 20px;
+            height: 100px;
+            position: fixed;
+            top: 0;
+            z-index: 10000;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        .logo {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .logo-link {
+            display: inline-block;
+        }
+
+        .logo-img {
+            display: block;
+            height: auto;
+            max-width: 75px;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        /* Title */
+        .site-title {
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: #f8f8f8;
+            /* White */
+            text-shadow: 2px 2px 5px rgba(13, 165, 220, 0.438);
+            position: relative;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        @media screen and (max-width: 600px) {
+            .logo img {
+                max-width: 70px;
+                height: auto;
+            }
+
+            .site-title {
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+
+        /* Hamburger icon */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            padding: 15px;
+            display: block;
+            background: #004e92;
+            color: white;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 999;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* Side nav */
+        .side-nav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to right, #000428, #004e92);
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding-top: 60px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* .side-nav.open {
+    right: 0; 
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+} */
+
+        .side-nav a {
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .side-nav a:hover {
+            background-color: rgb(12, 57, 180);
+        }
+
+        .side-nav .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 100px auto 50px auto;
+            padding: 0 20px;
+        }
+
+        /* --- HERO SECTION --- */
+        .career-hero {
+            background: linear-gradient(to right, rgba(0, 4, 40, 0.85), rgba(0, 78, 146, 0.7)),
+                url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .career-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .career-hero p {
+            font-size: 19px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            color: #f0f0f0;
+            font-weight: 500;
+        }
+
+        .highlight-gold {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* --- BENEFITS GRID --- */
+        .benefits-section {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-bottom: 4px solid #004e92;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            color: #004e92;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* --- JOB OPENINGS --- */
+        .jobs-section h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+        }
+
+        .job-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-left: 5px solid #d4af37;
+            transition: box-shadow 0.3s;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .job-meta {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .apply-btn-small {
+            background: #004e92;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* --- APPLICATION FORM (With Resume Upload) --- */
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            margin: 0 auto;
+            border-top: 5px solid #004e92;
+        }
+
+        .form-title {
+            text-align: center;
+            color: #004e92;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #004e92;
+            outline: none;
+        }
+
+        /* CUSTOM FILE UPLOAD STYLING */
+        .file-upload-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100px;
+            border: 2px dashed #004e92;
+            border-radius: 10px;
+            background: #f9fbff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .file-upload-wrapper:hover {
+            background: #eef4ff;
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            /* Hidden but clickable */
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            color: #004e92;
+            margin-bottom: 5px;
+        }
+
+        .upload-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .file-name-display {
+            font-size: 13px;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* SUBMIT BUTTON */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 80px;
+                padding: 0 15px;
+            }
+
+            .career-hero {
+                padding: 50px 20px;
+            }
+
+            .career-hero h1 {
+                font-size: 32px;
+            }
+
+            .career-hero p {
+                font-size: 16px;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .apply-btn-small {
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+        }
+
+        /* --- STATUS MESSAGE STYLING --- */
+        .status-message {
+            display: none;
+            /* Hidden by default */
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Spinner Animation for the button */
+        .loading-spinner::after {
+            content: " ⏳";
+            animation: spin 1s infinite linear;
+        }
+
+        footer {
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            height: 4em;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header>
+            <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
+                </a>
+            </div>
+            <h1 class="site-title">Aakanksha Group</h1>
+            <div id="sideNav" class="side-nav">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="member login.html">Member Login</a>
+                <a href="about us.html">About Us</a>
+                <a href="calculator.html">EMI Calculator</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+
+        </header>
+
+        <main>
+
+            <div class="container">
+
+                <div class="career-hero">
+                    <h1>Join Our Mission</h1>
+                    <p>
+                        Build a career that matters. At <span class="highlight-gold">Aakanksha Group</span>, we are
+                        looking for passionate individuals ready to drive financial inclusion across the district.
+                    </p>
+                </div>
+
+                <div class="benefits-section">
+                    <h2 style="font-family:'Playfair Display', serif;">Why Work With Us?</h2>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🚀</span>
+                            <h3>Growth Opportunities</h3>
+                            <p>Fast-track promotions for high performers and regular skill development workshops.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">🛡️</span>
+                            <h3>Job Security</h3>
+                            <p>Stable employment in the resilient microfinance sector.
+                            </p>
+                        </div>
+                        <div class="benefit-card">
+                            <span class="benefit-icon">❤️</span>
+                            <h3>Impactful Work</h3>
+                            <p>Go home every day knowing you helped a family achieve financial independence.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="applicationForm" class="form-container">
+                    <h3 class="form-title">Job Application Form</h3>
+                    <form onsubmit="handleFormSubmit(event)">
+
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="applicantName" class="form-control"
+                                placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" id="applicantEmail" class="form-control" placeholder="Enter your email"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mobile Number *</label>
+                            <input type="text" id="applicantPhone" class="form-control"
+                                placeholder="Enter your 10 digit phone number" maxlength="10"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Position Applying For *</label>
+                            <select id="jobSelect" class="form-control" required>
+                                <option value="">Select a role...</option>
+                                <option value="Field Officer(F.O.)">Field Officer (F.O.)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Upload Resume / CV *</label>
+                            <div class="file-upload-wrapper">
+                                <span class="upload-icon">📂</span>
+                                <span class="upload-text">Click or Drag resume here</span>
+                                <input type="file" accept=".pdf,.doc,.docx" onchange="showFileName(this)" required>
+                                <div id="fileName" class="file-name-display"></div>
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                        <div id="formStatus" class="status-message"></div>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </main>
+
+
+        <footer>
+            <p>© 2025 Aakanksha Group Services. All Rights Reserved.</p>
+        </footer>
+
+        <script>
+            function toggleNav() {
+                const nav = document.getElementById("sideNav");
+                if (nav.style.width === "200px") {
+                    nav.style.width = "0";
+                } else {
+                    nav.style.width = "200px";
+                }
+            }
+            document.addEventListener("click", function (event) {
+                const nav = document.getElementById("sideNav");
+                const hamburger = document.querySelector(".hamburger");
+
+                if (nav.style.width === "200px" && !nav.contains(event.target) && !hamburger.contains(event.target)) {
+                    nav.style.width = "0";
+                }
+            });
+
+        </script>
+
+
+        <script>
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnSraF25sPRVEtTbb-0F7J1s-UY0YOm-IJ0Oa4R5q5GnIsAGnLWESJdVJNl9YD41m3/exec";
+
+            // Helper: Select job
+            function selectJob(jobTitle) {
+                document.getElementById('jobSelect').value = jobTitle;
+                document.getElementById('applicationForm').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Helper: Show filename
+            function showFileName(input) {
+                const display = document.getElementById('fileName');
+                const text = document.querySelector('.upload-text');
+                if (input.files && input.files[0]) {
+                    text.style.display = 'none';
+                    display.style.display = 'block';
+                    display.innerText = "Attached: " + input.files[0].name;
+                }
+            }
+
+            // --- MAIN SUBMIT FUNCTION ---
+            function handleFormSubmit(e) {
+                e.preventDefault();
+
+                const btn = document.querySelector('.submit-btn');
+                const statusDiv = document.getElementById('formStatus');
+                const originalText = "Submit Application";
+
+                // 1. Get Elements safely
+                const nameInput = document.getElementById('applicantName');
+                const emailInput = document.getElementById('applicantEmail');
+                const phoneInput = document.getElementById('applicantPhone');
+                const positionInput = document.getElementById('jobSelect');
+                const fileInput = document.querySelector('input[type="file"]');
+
+                // Safety Check
+                if (!nameInput || !emailInput || !phoneInput) {
+                    showStatus("Error: Code mismatch. Check HTML IDs.", "error");
+                    return;
+                }
+
+                // 2. Validate File (Crucial for Speed)
+                if (fileInput.files.length === 0) {
+                    showStatus("Please attach your resume.", "error");
+                    return;
+                }
+
+                const file = fileInput.files[0];
+                const fileSizeMB = file.size / 1024 / 1024;
+
+                // STOP upload if file is larger than 3MB (Speed Fix)
+                if (fileSizeMB > 3) {
+                    showStatus("File is too large! Please upload a PDF smaller than 3MB.", "error");
+                    return;
+                }
+
+                // 3. UI: Show Loading
+                btn.innerText = "Sending...";
+                btn.disabled = true;
+                btn.classList.add('loading-spinner'); // Optional CSS animation
+                statusDiv.style.display = 'none'; // Hide old messages
+
+                // 4. Read File & Send
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function () {
+                    const payload = {
+                        name: nameInput.value,
+                        email: emailInput.value,
+                        phone: phoneInput.value,
+                        position: positionInput.value,
+                        resumeData: reader.result
+                    };
+
+                    fetch(SCRIPT_URL, {
+                        method: "POST",
+                        body: JSON.stringify(payload)
+                    })
+                        .then(response => response.text())
+                        .then(data => {
+                            // SUCCESS
+                            showStatus("✅ Application Submitted Successfully! We will contact you soon.", "success");
+                            e.target.reset();
+                            document.getElementById('fileName').style.display = 'none';
+                            document.querySelector('.upload-text').style.display = 'block';
+                        })
+                        .catch(error => {
+                            // ERROR
+                            console.error('Error:', error);
+                            showStatus("❌ Connection Error. Please try again.", "error");
+                        })
+                        .finally(() => {
+                            // RESET BUTTON
+                            btn.innerText = originalText;
+                            btn.disabled = false;
+                            btn.classList.remove('loading-spinner');
+                        });
+                };
+            }
+
+            // Helper: Show Inline Message
+            function showStatus(message, type) {
+                const statusDiv = document.getElementById('formStatus');
+                statusDiv.style.display = 'block';
+                statusDiv.innerText = message;
+
+                // Reset classes
+                statusDiv.className = 'status-message';
+
+                if (type === 'success') {
+                    statusDiv.classList.add('status-success');
+                } else {
+                    statusDiv.classList.add('status-error');
+                }
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>

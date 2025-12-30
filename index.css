@@ -262,11 +262,11 @@ iframe.goog-te-banner-frame {
 .scroll-btn {
     position: fixed;
     right: 20px;
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background-color: #004aad;
     color: white;
-    font-size: 22px;
+    font-size: 15px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -278,7 +278,7 @@ iframe.goog-te-banner-frame {
 }
 
 #scrollTopBtn {
-    bottom: 80px;
+    bottom: 70px;
 }
 
 #scrollBottomBtn {
@@ -292,30 +292,57 @@ iframe.goog-te-banner-frame {
 
 
 .top {
-    background-image: url('top.png');
+    /* 1. Set the default image */
+    background-image: url('top.png'), url('top\ 2.png'), url('top\ 3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    /* 2. Positioning */
     padding: 500px 200px;
     text-align: center;
-    background-size: 100%;
-    animation: zoomBg 15s ease-in-out infinite alternate;
+
+    /* 3. THE ANIMATION UPDATE */
+    /* We run two animations at once: 
+       - zoomBg (your existing zoom)
+       - imageSlider (switches the picture) */
+    animation: zoomBg 15s ease-in-out infinite alternate,
+        imageSlider 15s steps(1) infinite;
+}
+
+/* 4. Define the Image Switch Animation */
+@keyframes imageSlider {
+
+    0%,
+    33% {
+        background-image: url('top.png');
+    }
+
+    33.01%,
+    66% {
+        background-image: url('top 2.png');
+    }
+
+    66.01%,
+    100% {
+        /* PUT YOUR SECOND IMAGE NAME HERE */
+        background-image: url('top 3.png');
+    }
 }
 
 @keyframes zoomBg {
     from {
-        background-size: 100%;
+        background-size: 110%;
     }
 
     to {
-        background-size: 105%;
+        background-size: 125%;
     }
 }
 
 @media (max-width: 768px) {
     .top {
         background-size: cover !important;
-        animation: none !important;
     }
 }
 
@@ -350,6 +377,52 @@ iframe.goog-te-banner-frame {
     }
 }
 
+/* The Button Design */
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    /* White Text */
+    border: 2px solid #fff;
+    /* White Border */
+    padding: 12px 35px;
+    /* Size of the button */
+    font-size: 16px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50px;
+    /* Makes it rounded (Pill shape) */
+    margin-top: 30px;
+    /* Spacing from the paragraph */
+    transition: all 0.4s ease;
+    /* Smooth animation speed */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* The Hover Effect (What happens when mouse touches it) */
+.hero-btn:hover {
+    border-color: #004e92;
+    background: linear-gradient(to right, #000428, #004e92);
+    color: #e0e0e0;
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.859);
+    transform: translateY(-3px);
+    /* Moves slightly up */
+}
+
+/* The Little Arrow Animation */
+.hero-btn span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 8px;
+}
+
+/* Move the arrow to the right on hover */
+.hero-btn:hover span {
+    transform: translateX(5px);
+}
+
 
 /* How It Works Section */
 .how-it-works {
@@ -378,6 +451,11 @@ iframe.goog-te-banner-frame {
     border-radius: 10px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-8px);
 }
 
 .step h3 {
@@ -388,28 +466,77 @@ iframe.goog-te-banner-frame {
 
 .step p {
     font-size: 15px;
-    color: white;
+    color: #e0e0e0;
+    line-height: 1.5;
 }
 
 /* Why Choose Us */
 .why-choose {
-    padding: 50px 15%;
-    background: #e3edf7;
-    text-align: center;
+    padding: 40px 20px;
+    background: #f4f8fb;
+    /* Light background to make white cards pop */
 }
 
 .why-choose h2 {
-    font-size: 28px;
-    color: #003366;
+    text-align: center;
+    color: #004e92;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
 }
 
-.why-choose ul {
+/* Remove default list styling */
+.benefit-list {
     list-style: none;
-    text-align: left;
     padding: 0;
-    font-size: 18px;
-    line-height: 1.8;
+    margin: 0;
 }
+
+/* The Card Style */
+.benefit-list li {
+    background: white;
+    margin-bottom: 15px;
+    /* Space between boxes */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+    display: flex;
+    /* Key for alignment */
+    align-items: flex-start;
+    /* Aligns icon to top */
+    gap: 15px;
+    /* Space between checkmark and text */
+    border-left: 5px solid #004e92;
+    /* Professional accent bar */
+    transition: transform 0.3s;
+}
+
+.benefit-list li:hover {
+    transform: translateY(-8px);
+}
+
+/* The Checkmark Icon */
+.benefit-list .icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    /* Prevents icon from getting squished */
+}
+
+/* The Text Area */
+.benefit-list .text {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* The Bold Headers inside the text */
+.benefit-list .text strong {
+    display: block;
+    color: #333;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
 
 /* Call-to-Action Section */
 .cta-section {
@@ -417,6 +544,11 @@ iframe.goog-te-banner-frame {
     padding: 50px 10%;
     text-align: center;
     color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-section:hover {
+    transform: scale(1.02);
 }
 
 .cta-container {
@@ -459,6 +591,11 @@ iframe.goog-te-banner-frame {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     max-width: 350px;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-card:hover {
+    transform: scale(1.08);
 }
 
 .cta-card h3 {
@@ -480,7 +617,6 @@ iframe.goog-te-banner-frame {
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s ease;
 }
 
 .cta-button:hover {
@@ -500,6 +636,11 @@ iframe.goog-te-banner-frame {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 50px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.submit-form:hover {
+    transform: scale(1.05);
 }
 
 .submit-form label {
@@ -592,6 +733,26 @@ select {
 .location iframe {
     width: 100%;
     border-radius: 10px;
+}
+
+/* The Button Base Style */
+.direction-btn {
+    background-color: green;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    /* 1. Add the transition here so it animates smoothly */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 2. The Animation (Happens when you mouse over) */
+.direction-btn:hover {
+    transform: scale(1.07);
 }
 
 

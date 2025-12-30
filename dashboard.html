@@ -756,7 +756,7 @@
                     <img src="logo.png" alt="Aakanksha Group Services Logo" class="logo-img">
                 </a>
             </div>
-            <h1 class="site-title"><span class="notranslate">Aakanksha Group Services</span></h1>
+            <h1 class="site-title"><span class="notranslate">Aakanksha Group</span></h1>
             <!-- search icon -->
             <a href="products.html"> <button id="searchToggle" class="header-search-toggle" aria-label="Search">
                     <img src="https://img.icons8.com/ios-filled/24/ffffff/search--v1.png" alt="Search Icon">
@@ -775,6 +775,8 @@
                 <a href="index.html">Home</a>
                 <a href="products.html">Products</a>
                 <a href="member login.html">Member Login</a>
+                <a href="about us.html">About Us</a>
+                <a href="career.html">Career</a>
                 <a href="calculator.html">EMI Calculator</a>
                 <a href="contact.html">Contact Us</a>
             </div>
@@ -854,7 +856,7 @@
             const emiContainer = document.getElementById("emiContainer");
             const toPayTab = document.getElementById("toPayTab");
             const completedTab = document.getElementById("completedTab");
-            const openSheetBtn = document.getElementById("openSheetBtn");
+
 
             // Profile/login
             const phone = localStorage.getItem('loggedInPhone');
@@ -867,23 +869,42 @@
             function safeNum(v) { const n = Number(v); return isNaN(n) ? 0 : n; }
             function formatDateFriendly(d) { if (!d) return '---'; try { return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }); } catch { return String(d); } }
 
+            /* DEVICE-PROOF DATE PARSER */
             function parseDateFlexible(s) {
                 if (!s && s !== 0) return null;
-                let d = new Date(s);
-                if (!isNaN(d.getTime())) return d;
-                if (typeof s === "string") {
-                    let m1 = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
-                    if (m1) return new Date(Number(m1[3]), Number(m1[2]) - 1, Number(m1[1]));
-                    let m2 = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2})$/);
-                    if (m2) {
-                        const day = Number(m2[1]), month = Number(m2[2]) - 1, year = 2000 + Number(m2[3]);
-                        return new Date(year, month, day);
+                let str = String(s).trim();
+
+                // Split by ANY non-digit character (dot, slash, dash, space)
+                // "04.08.25" becomes ["04", "08", "25"]
+                let parts = str.split(/[^0-9]/).filter(p => p.length > 0);
+
+                // If we found exactly 3 numbers, we force the logic: DD MM YYYY
+                if (parts.length === 3) {
+                    let n1 = Number(parts[0]);
+                    let n2 = Number(parts[1]);
+                    let n3 = Number(parts[2]);
+
+                    // SAFETY: If the first number is huge (like 2025), it's ISO format (YYYY-MM-DD)
+                    if (n1 > 31) {
+                        return new Date(n1, n2 - 1, n3);
                     }
-                    let m3 = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
-                    if (m3) return new Date(Number(m3[3]), Number(m3[2]) - 1, Number(m3[1]));
+
+                    // OTHERWISE: Standard User Format (DD.MM.YY)
+                    let day = n1;            // First number is ALWAYS Day
+                    let month = n2 - 1;      // Second is Month (0-11)
+                    let year = n3;           // Third is Year
+
+                    // Fix 2-digit years (e.g., 25 becomes 2025)
+                    if (year < 100) year += 2000;
+
+                    return new Date(year, month, day);
                 }
-                return null;
+
+                // Fallback: Let browser try if format is weird
+                let d = new Date(str);
+                return isNaN(d.getTime()) ? null : d;
             }
+
 
             // Fetch sheet rows (opensheet)
             async function fetchSheetRows() {
@@ -1027,19 +1048,28 @@
                         return;
                     }
 
+
                     // --- PROCEED TO RENDER TIMELINE ---
 
-                    let firstEmiDate = parseDateFlexible(latest.firstEmi || latest.disDate);
+                    // 1. Get the raw string first
+                    let dateStr = latest.firstEmi || latest.disDate;
+
+                    // 2. Use our new Device-Proof parser (It handles DD.MM.YY, DD/MM/YYYY, etc.)
+                    let firstEmiDate = parseDateFlexible(dateStr);
+
+                    // 3. Fallback Loop: Look at history if still missing
                     if (!firstEmiDate) {
                         for (let r of norm) {
                             let d = parseDateFlexible(r.firstEmi || r.disDate);
                             if (d) { firstEmiDate = d; break; }
                         }
                     }
+
                     if (!firstEmiDate) {
                         emiContainer.innerHTML = '<p style="color:red;text-align:center;">First EMI Date missing.</p>';
                         return;
                     }
+
 
                     // 1. Determine EMI
                     let weeklyEMI = latest.ewiAmount;
@@ -1188,7 +1218,6 @@
             // --- INIT ---
             if (toPayTab) toPayTab.onclick = () => { toPayTab.classList.add('active'); completedTab.classList.remove('active'); loadAndRenderWeekly(); };
             if (completedTab) completedTab.onclick = () => { completedTab.classList.add('active'); toPayTab.classList.remove('active'); loadAndRenderWeekly(); };
-            if (openSheetBtn) openSheetBtn.addEventListener('click', () => { window.open(`https://docs.google.com/spreadsheets/d/${SHEET_ID}`, '_blank'); });
 
             setTimeout(loadAndRenderWeekly, 500);
 

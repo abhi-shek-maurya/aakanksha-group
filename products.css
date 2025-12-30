@@ -470,6 +470,33 @@ main {
   font-size: 20px;
 }
 
+/* Style for the button created by JS */
+.emi-buttons {
+  display: none !important;
+}
+
+.get-now-btn {
+  display: block;
+  width: 60%;
+  margin: 20px auto;
+  padding: 12px 0;
+  background: linear-gradient(135deg, #004e92, #000428);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.get-now-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 78, 146, 0.4);
+}
+
 .ending {
   text-align: center;
   font-family: sans-serif;
